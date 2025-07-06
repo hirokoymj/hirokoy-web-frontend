@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { useAppSelector } from '../redux/hooks';
-import { defaultTheme } from './defaultTheme';
-import { winterTheme } from './winterTheme';
+import { useAppSelector } from 'redux/hooks';
+import { defaultTheme } from 'styles/defaultTheme';
+import { winterTheme } from 'styles/winterTheme';
 
 enum Theme {
   default = 'default',

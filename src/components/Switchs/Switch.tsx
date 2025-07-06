@@ -1,12 +1,10 @@
 import React from 'react';
-//import { useSelector, useDispatch } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
-//import { config } from '../../config';
-//import { setThemeName } from '../../redux/themeSlice';
-//const { Theme } = config;
+import { useAppSelector, useAppDispatch } from 'redux/hooks';
+import { setThemeName } from 'redux/theme/themeSlice';
 
 enum PageTheme {
   Default = 'default',
@@ -22,19 +20,19 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 export const ThemeSwitch = () => {
   const { classes } = useStyles();
-  //  const themeName = useSelector((state: any) => state.theme.name); ///RootState
-  //  const dispatch = useDispatch();
+  const themeName = useAppSelector((state) => state.theme.name);
+  const dispatch = useAppDispatch();
 
   const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const themeName = event.target.checked ? PageTheme.seasonal : PageTheme.default;
-    //dispatch(setThemeName(themeName));
+    const themeName = event.target.checked ? PageTheme.Seasonal : PageTheme.Default;
+    dispatch(setThemeName(themeName));
   };
 
   return (
     <FormControlLabel
       control={
         <Switch
-          checked={themeName === PageTheme.seasonal}
+          checked={themeName === PageTheme.Seasonal}
           onChange={handleSwitchChange}
           name="themeSwitch"
           size="medium"

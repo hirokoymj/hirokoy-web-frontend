@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 export const winterTheme = createTheme({
   palette: {
     primary: {
-      light: '#357a38',
+      light: '#b7deb8',
       main: '#4caf50',
       dark: '#6fbf73',
       contrastText: '#fff',

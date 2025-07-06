@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,8 +11,8 @@ import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
 import { Logo } from 'components/Logo/Logo';
-//import { MainNavItems, SecondaryNavItems } from 'components/Links/Navigations';
-//import { ThemeSwitch } from 'components/Switchs/Switch';
+import { LeftNaviagtion } from 'components/Navigation/ListItemLink';
+import { ThemeSwitch } from 'components/Switchs/Switch';
 //import { LoginButton } from 'pages/auth/LoginButton';
 
 const drawerWidth = 240;
@@ -119,8 +118,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ open, handleDrawerOpen, 
             <MenuIcon />
           </IconButton>
           <Logo />
-          {/* <ThemeSwitch />
-          <LoginButton /> */}
+          <ThemeSwitch />
+          {/* <LoginButton /> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -136,9 +135,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ open, handleDrawerOpen, 
           </IconButton>
         </div>
         <Divider />
-        <List>{/* <MainNavItems /> */}</List>
-        <Divider />
-        <List>{/* <SecondaryNavItems /> */}</List>
+        <LeftNaviagtion />
       </Drawer>
     </>
   );

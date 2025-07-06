@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-// import { PageHeader } from 'pages/base/PageHeader';
-//import { PageFooter } from 'pages/base/PageFooter';
+import { PageHeader } from 'pages/base/PageHeader';
+import { PageFooter } from 'pages/base/PageFooter';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
@@ -58,7 +58,7 @@ export const RootLayout = () => {
     <div className={classes.root}>
       <PageHeader open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
       <main className={classes.content}>
-        <div style={{ minHeight: 48 }} />
+        <div style={{ minHeight: '48px' }} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Outlet />

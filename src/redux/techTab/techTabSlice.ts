@@ -15,7 +15,7 @@ export const techTabSlice = createSlice({
       state.value = action.payload;
     },
     resetActiveTab: (state) => {
-      state.value = 1;
+      state.value = 0;
     },
   },
 });
