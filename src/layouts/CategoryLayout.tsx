@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { useSnackbar } from "notistack";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { useSnackbar } from 'notistack';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
-import { CategoryTable } from "pages/category/CategoryTable";
-import { AlertDialog } from "components/Dialog/AlertDialog";
-import { Title } from "components/Titles/Title";
-import { CategoryForm } from "pages/category/CategoryForm";
-import { DELETE_CATEGORY } from "mutations/Category";
-import { CATEGORY_ALL } from "queries/Category";
+import { CategoryTable } from 'pages/category/CategoryTable';
+import { AlertDialog } from 'components/Dialog/AlertDialog';
+import { Title } from 'components/Titles/Title';
+import { CategoryForm } from 'pages/category/CategoryForm';
+import { DELETE_CATEGORY } from 'mutations/Category';
+import { CATEGORY_ALL } from 'queries/Category';
 
 export const CategoryLayout = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(false);
-  const [categoryId, setCategoryId] = useState("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [categoryId, setCategoryId] = useState<string>('');
   const [deleteCategory] = useMutation(DELETE_CATEGORY, {
     refetchQueries: [CATEGORY_ALL],
   });
 
   const handleClose = () => setOpen(false);
 
-  const handleOpen = (id) => {
+  const handleOpen = (id: string) => {
     setCategoryId(id);
     setOpen(true);
   };
@@ -36,8 +36,8 @@ export const CategoryLayout = () => {
           id: categoryId,
         },
       });
-      enqueueSnackbar("Category successfully deleted!", {
-        variant: "success",
+      enqueueSnackbar('Category successfully deleted!', {
+        variant: 'success',
       });
       handleClose();
     } catch (e) {
@@ -49,13 +49,13 @@ export const CategoryLayout = () => {
     <Container maxWidth="lg">
       <Outlet />
       <Grid container spacing={3} justifyContent="center">
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Title text="Create Category" />
           <Paper>
             <CategoryForm />
           </Paper>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Paper>
             <Container maxWidth="lg">
               <CategoryTable openDialog={handleOpen} />

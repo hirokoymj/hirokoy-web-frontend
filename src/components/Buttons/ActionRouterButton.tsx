@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
-import Icon from '@mui/material/Icon';
+//import Icon from '@mui/material/Icon';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
@@ -24,17 +24,15 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 interface ActionRouterButtonProps {
   to: string;
-  icon: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const ActionRouterButton: React.FC<ActionRouterButtonProps> = ({ to, icon }) => {
+export const ActionRouterButton: React.FC<ActionRouterButtonProps> = ({ to, children }) => {
   const { classes } = useStyles();
 
   return (
     <NavLink to={to}>
-      <IconButton classes={{ root: classes.iconButtonRoot }}>
-        <Icon classes={{ root: classes.svgIconRoot }}>{icon}</Icon>
-      </IconButton>
+      <IconButton classes={{ root: classes.iconButtonRoot }}>{children}</IconButton>
     </NavLink>
   );
 };

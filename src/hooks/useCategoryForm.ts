@@ -4,21 +4,7 @@ import { useSnackbar } from 'notistack';
 import { CREATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_ALL } from 'queries/Category';
 import { CategoryFormValues } from 'pages/validation/formValidations';
-
-interface Category {
-  id: string;
-  name: string;
-  abbr: string;
-  createdAt: number;
-  updatedAt: number;
-}
-
-type CategoryAllData = {
-  categoryAll: Category[];
-};
-type CreateCategoryData = {
-  createCategory: Category;
-};
+import { CategoryAllData, CreateCategoryData } from 'pages/category/types';
 
 export const useCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();

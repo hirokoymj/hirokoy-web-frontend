@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 import IconButton from '@mui/material/IconButton';
-import Icon from '@mui/material/Icon';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
@@ -22,16 +21,16 @@ const useStyles = makeStyles()((theme: Theme) => ({
 }));
 
 interface ActionButtonProps {
-  icon: ReactNode;
+  children: ReactNode;
   onClick: () => void;
 }
 
-export const ActionButton: FC<ActionButtonProps> = ({ icon, onClick }) => {
+export const ActionButton: FC<ActionButtonProps> = ({ children, onClick }) => {
   const { classes } = useStyles();
 
   return (
     <IconButton classes={{ root: classes.iconButtonRoot }} onClick={onClick}>
-      <Icon classes={{ root: classes.svgIconRoot }}>{icon}</Icon>
+      {children}
     </IconButton>
   );
 };
