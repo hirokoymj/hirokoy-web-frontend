@@ -21,7 +21,8 @@ export interface CategoryFormValues {
 export const subCategoryFormSchema = yup.object().shape({
   categoryId: yup.string().required('Category is required field.'),
   name: yup.string().required('Sub Category name is required field.'),
-  order: yup.string().optional(),
+  //order: yup.string().optional(),
+  order: yup.string().required('please add a display order.'),
 });
 
 export const loginFormSchema = yup.object().shape({

@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import { useSnackbar } from "notistack";
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { useSnackbar } from 'notistack';
 
-import { SubCategoryTable } from "pages/subCategory/SubCategoryTable";
-import { AlertDialog } from "components/Dialog/AlertDialog";
-import { DELETE_SUB_CATEGORY } from "mutations/SubCategory";
-import { SUB_CATEGORY_ALL } from "queries/SubCategory";
-import { SubCategoryForm } from "pages/subCategory/SubCategoryForm";
-import { Title } from "components/Titles/Title";
+import { SubCategoryTable } from 'pages/subCategory/SubCategoryTable';
+import { AlertDialog } from 'components/Dialog/AlertDialog';
+import { DELETE_SUB_CATEGORY } from 'mutations/SubCategory';
+import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
+import { SubCategoryForm } from 'pages/subCategory/SubCategoryForm';
+import { Title } from 'components/Titles/Title';
 
 export const SubCategoryLayout = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(false);
-  const [subCategoryId, setSubCategoryId] = useState("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [subCategoryId, setSubCategoryId] = useState<string>('');
   const [deleteSubCategory] = useMutation(DELETE_SUB_CATEGORY, {
     refetchQueries: [SUB_CATEGORY_ALL],
   });
@@ -26,7 +26,7 @@ export const SubCategoryLayout = () => {
     setOpen(false);
   };
 
-  const handleOpen = (id) => {
+  const handleOpen = (id: string) => {
     setSubCategoryId(id);
     setOpen(true);
   };
@@ -38,8 +38,8 @@ export const SubCategoryLayout = () => {
           id: subCategoryId,
         },
       });
-      enqueueSnackbar("Sub Category successfully deleted!", {
-        variant: "success",
+      enqueueSnackbar('Sub Category successfully deleted!', {
+        variant: 'success',
       });
       handleClose();
     } catch (e) {
@@ -51,11 +51,11 @@ export const SubCategoryLayout = () => {
     <Container maxWidth="lg">
       <Outlet />
       <Grid container spacing={3} justifyContent="center">
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Title text="Create Subcategory" />
           <Paper>{<SubCategoryForm />}</Paper>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Paper>
             <Container maxWidth="lg">
               <SubCategoryTable openDialog={handleOpen} />

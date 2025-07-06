@@ -9,11 +9,11 @@ export interface DropdownOption {
 interface DataItem {
   id: string | number;
   name: string;
-  [key: string]: any; // Allow for other properties not relevant to dropdown
+  // [key: string]: any; // Allow for other properties not relevant to dropdown
 }
 
-export const makeDropdownOptions = (data: [], path: string, loading: boolean): DropdownOption[] => {
-  const dataArray: DataItem[] = !loading ? get(data, path, []) : [];
+export const makeDropdownOptions = <T>(data: T, path: string, loading: boolean): DropdownOption[] => {
+  const dataArray: DataItem[] = !loading ? (get(data, path, []) as DataItem[]) : [];
 
   const dropdown_options: DropdownOption[] = map(dataArray, ({ id, name }: DataItem) => {
     return {
