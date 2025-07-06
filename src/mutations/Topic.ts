@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
-import { CategoryFragments } from "../queries/CategoryFragments";
-import { SubCategoryFragments } from "../queries/SubCategoryFragments";
+import { gql } from '@apollo/client';
+import { CategoryFragments } from '../queries/CategoryFragments';
+import { SubCategoryFragments } from '../queries/SubCategoryFragments';
 
 export const CREATE_TOPIC = gql`
   mutation CreateTopic($input: createTopicInput!) {
@@ -14,6 +14,7 @@ export const CREATE_TOPIC = gql`
       subCategory {
         ...SubCategoryInfo
       }
+      order
     }
   }
   ${CategoryFragments.categoryInfo}

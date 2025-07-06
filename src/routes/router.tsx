@@ -4,7 +4,7 @@ import { RootLayout } from 'layouts/RootLayout';
 import ComponentTest from 'components/ComponentTest';
 import { CategoryLayout } from 'layouts/CategoryLayout';
 import { SubCategoryLayout } from 'layouts/SubCategoryLayout';
-// import { TopicLayout } from 'layouts/TopicLayout';
+import { TopicLayout } from 'layouts/TopicLayout';
 // import { TechLayout } from 'layouts/TechLayout';
 // import { WeatherLayout } from 'layouts/WeatherLayout';
 // import { TestLayout } from 'layouts/TestLayout';
@@ -12,7 +12,7 @@ import { SubCategoryLayout } from 'layouts/SubCategoryLayout';
 // import { WeatherView } from 'pages/weather/WeatherView';
 import { CategoryEditView } from 'pages/category/CategoryEditView';
 import { SubCategoryEditView } from 'pages/subCategory/SubCategoryEditView';
-// import { TopicEditView } from 'pages/topic/TopicEditView';
+import { TopicEditView } from 'pages/topic/TopicEditView';
 // import { TechView } from 'pages/tech/TechView';
 // import { LoginView } from 'pages/auth/LoginView';
 // import { SignupView } from 'pages/auth/SignupView';
@@ -34,6 +34,9 @@ export const router = createBrowserRouter(
       </Route>
       <Route path="subCategory" element={<SubCategoryLayout />}>
         <Route path=":id" element={<SubCategoryEditView />} />
+      </Route>
+      <Route path="topic" element={<TopicLayout />}>
+        <Route path=":topicId/:categoryId" element={<TopicEditView />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>,

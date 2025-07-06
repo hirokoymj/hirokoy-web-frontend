@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Grid, Button } from "@material-ui/core";
-import { FormProvider, useForm } from "react-hook-form";
-import Container from "@material-ui/core/Container";
+import React, { useEffect, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Grid, Button, Container } from '@mui/material';
 
-import { topicFormSchema } from "pages/validation/formValidations";
-import { useTopicForm } from "hooks/useTopicForm";
-import { FormInputText } from "components/Forms/FormInputText";
-import { FormInputDropdown } from "components/Forms/FormInputDropdown";
+import { topicFormSchema } from 'pages/validation/formValidations';
+import { useTopicForm } from 'hooks/useTopicForm';
+import { FormInputText } from 'components/Forms/FormInputText';
+import { FormInputDropdown } from 'components/Forms/FormInputDropdown';
 
 export const TopicForm = () => {
   const methods = useForm({
@@ -18,29 +17,23 @@ export const TopicForm = () => {
     reset,
     formState: { isSubmitSuccessful },
   } = methods;
-  const [categoryId, setCategoryId] = useState("");
-  const {
-    loading,
-    category_options,
-    onSubmit,
-    subCategory_options,
-    defaultValues,
-  } = useTopicForm(categoryId);
+  const [categoryId, setCategoryId] = useState<string>('');
+  const { loading, category_options, onSubmit, subCategory_options, defaultValues } = useTopicForm(categoryId);
 
   useEffect(() => {
     if (isSubmitSuccessful) reset({ ...defaultValues });
   }, [isSubmitSuccessful, reset, defaultValues]);
 
-  const handleCategoryChange = (event) => {
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newVal = event.target.value;
     setCategoryId(newVal);
   };
 
   return (
-    <Container maxWidth="xs" style={{ padding: "24px" }}>
+    <Container maxWidth="xs" style={{ padding: '24px' }}>
       <FormProvider {...methods}>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FormInputDropdown
               name="category"
               label="Category"
@@ -49,7 +42,7 @@ export const TopicForm = () => {
               disabled={loading}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FormInputDropdown
               name="subCategory"
               label="Sub Category"
@@ -57,22 +50,17 @@ export const TopicForm = () => {
               disabled={loading}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FormInputText label="Title" name="title" />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FormInputText label="URL" name="url" />
           </Grid>
-          <Grid item xs={6}>
+          <Grid size={6}>
             <FormInputText label="order" name="order" type="number" />
           </Grid>
-          <Grid item xs={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              onClick={handleSubmit(onSubmit)}>
+          <Grid size={12}>
+            <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleSubmit(onSubmit)}>
               Submit
             </Button>
           </Grid>

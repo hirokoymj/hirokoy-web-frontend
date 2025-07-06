@@ -1,13 +1,9 @@
 import get from 'lodash/get';
 import map from 'lodash/map';
-
-export interface DropdownOption {
-  value: string | number;
-  label: string;
-}
+import { DropdownOption } from 'pages/category/types';
 
 interface DataItem {
-  id: string | number;
+  id: string;
   name: string;
   // [key: string]: any; // Allow for other properties not relevant to dropdown
 }

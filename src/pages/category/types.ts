@@ -46,6 +46,42 @@ export type CreateSubCategoryData = {
 };
 
 export interface DropdownOption {
+  //After it should be rename DropdownItem.
   value: string;
   label: string;
 }
+
+//=====Topic
+export interface TopicFormValues {
+  category: string;
+  subCategory: string;
+  title: string;
+  url: string;
+  order?: string;
+}
+
+export interface Topic {
+  id: string;
+  title: string;
+  url: string;
+  createdAt: number;
+  updatedAt: number;
+  category: Category;
+  subCategory: SubCategory;
+  order?: number;
+}
+export type TopicByIdData = {
+  topicById: Topic;
+};
+export type TopicByIdCategoryData = {
+  topicByCategory: Topic;
+};
+export type TopicByIdCategoryAbbrData = {
+  topicByCategoryAbbr: Topic;
+};
+export type TopicAllData = {
+  topicAll: Topic[];
+};
+export type CreateTopicData = {
+  createTopic: Topic;
+};
