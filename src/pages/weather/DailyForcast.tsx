@@ -1,8 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { format } from 'date-fns';
-//import get from 'lodash/get';
-//import map from 'lodash/map';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -86,32 +84,9 @@ export const DailyForecast: React.FC<DailyForecastProps> = ({ city, unit }) => {
     },
   });
 
-  //console.log(data);
+  //!loading && console.log(data);
   const { forecastList } = !loading && data?.dailyForecast ? data.dailyForecast : { forecastList: [] };
-  //console.log(forecastList);
-
-  const mappedData = forecastList.map((forecast) => {
-    const {
-      dt,
-      condition,
-      icon,
-      temperature: { min, max },
-      rain,
-      humidity,
-    } = forecast;
-
-    return {
-      dt,
-      condition,
-      icon,
-      min,
-      max,
-      rain,
-      humidity,
-    };
-  });
   const unit_format = unit === 'imperial' ? 'F' : 'C';
-  const mappedDataLen = mappedData.length;
 
   return (
     <>
@@ -145,9 +120,9 @@ export const DailyForecast: React.FC<DailyForecastProps> = ({ city, unit }) => {
                   <ListItemText primary="Rain" className={classes.rain} />
                   <ListItemText primary="Humidity" className={classes.humidity} />
                 </ListItem>
-                {mappedData.map(({ dt, condition, icon, min, max, rain, humidity }, index) => {
+                {forecastList.map(({ dt, condition, icon, temperature: { min, max }, rain, humidity }) => {
                   return (
-                    <ListItem divider={index !== mappedDataLen - 1 ? true : false} dense key={dt}>
+                    <ListItem divider dense key={dt}>
                       <ListItemText
                         primary={format(new Date(dt * 1000), 'iii, MM/dd')}
                         className={classes.forecastDate}
