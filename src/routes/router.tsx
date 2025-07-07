@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from 'react-router-dom';
 //Layouts
 import { RootLayout } from 'layouts/RootLayout';
 import ComponentTest from 'components/ComponentTest';
@@ -6,10 +6,9 @@ import { CategoryLayout } from 'layouts/CategoryLayout';
 import { SubCategoryLayout } from 'layouts/SubCategoryLayout';
 import { TopicLayout } from 'layouts/TopicLayout';
 import { TechLayout } from 'layouts/TechLayout';
-// import { WeatherLayout } from 'layouts/WeatherLayout';
-// import { TestLayout } from 'layouts/TestLayout';
+import { WeatherLayout } from 'layouts/WeatherLayout';
 //View
-// import { WeatherView } from 'pages/weather/WeatherView';
+import { WeatherView } from 'pages/weather/WeatherView';
 import { CategoryEditView } from 'pages/category/CategoryEditView';
 import { SubCategoryEditView } from 'pages/subCategory/SubCategoryEditView';
 import { TopicEditView } from 'pages/topic/TopicEditView';
@@ -18,7 +17,6 @@ import { TechView } from 'pages/tech/TechView';
 // import { SignupView } from 'pages/auth/SignupView';
 // import { TodoView } from 'pages/TodoView';
 import { NotFound } from 'pages/base/NotFound';
-// import { TestDetailView } from 'pages/test/TestDetailView';
 
 const Demo = () => {
   return <h1>DEMO</h1>;
@@ -27,6 +25,11 @@ const Demo = () => {
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+      <Route index element={<Navigate to="/weather/dallas" />} />
+      <Route path="weather" element={<WeatherLayout />}>
+        <Route path=":city" element={<WeatherView />} />
+      </Route>
+
       <Route path="demo" element={<Demo />} />
       <Route path="test" element={<ComponentTest />} />
       <Route path="category" element={<CategoryLayout />}>

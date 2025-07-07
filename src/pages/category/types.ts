@@ -46,7 +46,6 @@ export type CreateSubCategoryData = {
 };
 
 export interface DropdownOption {
-  //After it should be rename DropdownItem.
   value: string;
   label: string;
 }
@@ -84,4 +83,45 @@ export type TopicAllData = {
 };
 export type CreateTopicData = {
   createTopic: Topic;
+};
+
+//=====Weather Info
+export type Temperature = {
+  day: number;
+  min: number;
+  max: number;
+};
+export type CityInfo = {
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
+};
+export type Weather = {
+  dt: number;
+  condition: string;
+  description: string;
+  feelsLike: string;
+  icon: string;
+  temperature: Temperature;
+  humidity: number;
+};
+export type Forecast = {
+  dt: number;
+  condition: string;
+  icon: string;
+  temperature: Temperature;
+  humidity: number;
+  wind: number;
+  rain: number;
+};
+export type Current_Weather_By_CityData = {
+  currentWeatherByCity: {
+    id: string;
+    cityInfo: CityInfo;
+    weather: Weather;
+  };
+};
+export type Daily_ForcastData = {
+  dailyForecast: { id: string; cityInfo: CityInfo; forecastList: [] };
 };

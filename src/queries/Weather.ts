@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-import { WeatherFragments } from "./WeatherFragments.js";
+import { WeatherFragments } from './WeatherFragments';
 
 export const CURRENT_WEATHER_BY_CITY = gql`
   query CurrentWeatherByCity($city: String!, $unit: Units) {
