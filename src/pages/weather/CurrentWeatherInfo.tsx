@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
+import RoomIcon from '@mui/icons-material/Room';
 
 import { CURRENT_WEATHER_BY_CITY } from 'queries/Weather';
-//import { GoogleMap } from 'components/GoogleMap/GoogleMap';
+import { GoogleMap } from 'components/GoogleMap/GoogleMap';
 import { CurrentWeatherSkeleton } from 'components/Skeleton/WeatherSkeleton';
 
 const useStyles = makeStyles()((theme: Theme) => ({
@@ -126,6 +127,18 @@ export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({ city, un
                 </Grid>
               </Grid>
             </Paper>
+          </Grid>
+          <Grid size={{ xs: 12, md: 7 }}>
+            <div
+              style={{
+                height: '100%',
+                width: '100%',
+              }}
+            >
+              <GoogleMap lat={parseFloat(lat)} lng={parseFloat(lon)}>
+                <RoomIcon color="error" fontSize="large" />
+              </GoogleMap>
+            </div>
           </Grid>
         </Grid>
       )}
