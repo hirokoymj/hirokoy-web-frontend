@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { subCategoryFormSchema } from '../validation/formValidations';
 import { FormInputText } from 'components/Forms/FormInputText';
 import { FormInputDropdown } from 'components/Forms/FormInputDropdown';
-import { SubCategoryFormValues, DropdownOption } from 'pages/category/types';
+import { SubCategoryFormValues, DropdownOption } from 'pages/type/types';
 
 interface SubCategoryEditFormProps {
   onSubmit: (values: SubCategoryFormValues) => void;

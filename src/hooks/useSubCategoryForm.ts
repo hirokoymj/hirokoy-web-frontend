@@ -5,7 +5,7 @@ import { CREATE_SUB_CATEGORY } from 'mutations/SubCategory';
 import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
 import { CATEGORY_ALL } from 'queries/Category';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { CategoryAllData, CreateCategoryData, SubCategoryFormValues } from 'pages/category/types';
+import { CategoryAllData, CreateCategoryData, SubCategoryFormValues } from 'pages/type/types';
 
 export const useSubCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();

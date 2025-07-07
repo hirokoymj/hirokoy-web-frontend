@@ -3,7 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Button, Grid, Container } from '@mui/material';
 
-import { categoryFormSchema, CategoryFormValues } from 'pages/validation/formValidations';
+import { categoryFormSchema } from 'pages/validation/formValidations';
+import { CategoryFormValues } from 'pages/type/types';
 import { useCategoryForm } from 'hooks/useCategoryForm';
 import { FormInputText } from 'components/Forms/FormInputText';
 

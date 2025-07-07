@@ -3,9 +3,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { categoryFormSchema } from '../validation/formValidations';
+import { categoryFormSchema } from 'pages/validation/formValidations';
 import { FormInputText } from 'components/Forms/FormInputText';
-import { CategoryFormValues } from 'pages/validation/formValidations';
+import { CategoryFormValues } from 'pages/type/types';
 
 interface CategoryEditFormProps {
   onSubmit: (values: CategoryFormValues) => void;

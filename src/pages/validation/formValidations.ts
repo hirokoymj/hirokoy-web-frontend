@@ -13,11 +13,6 @@ export const categoryFormSchema = yup.object().shape({
   abbr: yup.string().required('Abbreviation is required.'),
 });
 
-export interface CategoryFormValues {
-  name: string;
-  abbr: string;
-}
-
 export const subCategoryFormSchema = yup.object().shape({
   categoryId: yup.string().required('Category is required field.'),
   name: yup.string().required('Sub Category name is required field.'),

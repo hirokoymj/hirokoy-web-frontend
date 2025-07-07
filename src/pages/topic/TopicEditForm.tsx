@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { topicFormSchema } from 'pages/validation/formValidations';
 import { FormInputDropdown } from 'components/Forms/FormInputDropdown';
 import { FormInputText } from 'components/Forms/FormInputText';
-import { TopicFormValues, DropdownOption } from 'pages/category/types';
+import { TopicFormValues, DropdownOption } from 'pages/type/types';
 
 interface TopicEditFormProps {
   onSubmit: (values: TopicFormValues) => void;

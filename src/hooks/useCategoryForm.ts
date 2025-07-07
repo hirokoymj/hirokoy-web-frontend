@@ -3,8 +3,8 @@ import { useSnackbar } from 'notistack';
 
 import { CREATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_ALL } from 'queries/Category';
-import { CategoryFormValues } from 'pages/validation/formValidations';
-import { CategoryAllData, CreateCategoryData } from 'pages/category/types';
+import { CategoryFormValues } from 'pages/type/types';
+import { CategoryAllData, CreateCategoryData } from 'pages/type/types';
 
 export const useCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();

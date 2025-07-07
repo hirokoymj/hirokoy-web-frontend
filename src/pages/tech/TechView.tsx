@@ -8,7 +8,7 @@ import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import { TOPIC_BY_CATEGORY_ABBR } from 'queries/Topic';
 import { TechCardSkeleton } from 'components/Skeleton/LoadingSkeleton';
-import { TopicByIdCategoryAbbrData, Category, SubCategory } from 'pages/category/types';
+import { TopicByIdCategoryAbbrData, Category, SubCategory } from 'pages/type/types';
 
 interface TechCardProps {
   mappedData: {

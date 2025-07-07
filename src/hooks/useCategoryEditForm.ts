@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { UPDATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_BY_ID } from 'queries/Category';
 import { CATEGORY_ALL } from 'queries/Category';
-import { CategoryByIdData } from 'pages/category/types';
-import { CategoryFormValues } from 'pages/validation/formValidations';
+import { CategoryByIdData, CategoryFormValues } from 'pages/type/types';
 
 export const useCategoryEditForm = (id: string) => {
   const { enqueueSnackbar } = useSnackbar();

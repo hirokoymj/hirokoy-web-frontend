@@ -1,3 +1,4 @@
+//=====Category
 export interface Category {
   id: string;
   name: string;
@@ -15,6 +16,10 @@ export type CategoryByIdData = {
 export type CreateCategoryData = {
   createCategory: Category;
 };
+export interface CategoryFormValues {
+  name: string;
+  abbr: string;
+}
 
 //=====SubCategory
 export interface SubCategoryFormValues {

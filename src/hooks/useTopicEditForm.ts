@@ -8,7 +8,7 @@ import { CATEGORY_ALL } from 'queries/Category';
 import { TOPIC_BY_ID } from 'queries/Topic';
 import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { SubCategoryByCategoryData, TopicFormValues, TopicByIdData, CategoryAllData } from 'pages/category/types';
+import { SubCategoryByCategoryData, TopicFormValues, TopicByIdData, CategoryAllData } from 'pages/type/types';
 
 export const useTopicEditForm = (topicId: string, categoryId: string) => {
   const navigate = useNavigate();

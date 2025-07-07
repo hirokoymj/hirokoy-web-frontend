@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import map from 'lodash/map';
-import { DropdownOption } from 'pages/category/types';
+import { DropdownOption } from 'pages/type/types';
 
 interface DataItem {
   id: string;

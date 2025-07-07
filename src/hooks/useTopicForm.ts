@@ -5,7 +5,7 @@ import { CATEGORY_ALL } from 'queries/Category';
 import { TOPIC_ALL } from 'queries/Topic';
 import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { CreateTopicData, CategoryAllData, SubCategoryByCategoryData, TopicFormValues } from 'pages/category/types';
+import { CreateTopicData, CategoryAllData, SubCategoryByCategoryData, TopicFormValues } from 'pages/type/types';
 
 export const useTopicForm = (categoryId: string) => {
   const { enqueueSnackbar } = useSnackbar();

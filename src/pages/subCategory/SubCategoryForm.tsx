@@ -7,7 +7,7 @@ import { subCategoryFormSchema } from 'pages/validation/formValidations';
 import { useSubCategoryForm } from 'hooks/useSubCategoryForm';
 import { FormInputText } from 'components/Forms/FormInputText';
 import { FormInputDropdown } from 'components/Forms/FormInputDropdown';
-import { SubCategoryFormValues } from 'pages/category/types';
+import { SubCategoryFormValues } from 'pages/type/types';
 
 export const SubCategoryForm = () => {
   const { onSubmit, category_options, loading } = useSubCategoryForm();

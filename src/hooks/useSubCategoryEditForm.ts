@@ -12,7 +12,7 @@ import {
   SubCategoryFormValues,
   Category,
   DropdownOption,
-} from 'pages/category/types';
+} from 'pages/type/types';
 
 // interface DropdownOption {
 //   value: string;
