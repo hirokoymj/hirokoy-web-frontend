@@ -16,10 +16,10 @@ export type CategoryByIdData = {
 export type CreateCategoryData = {
   createCategory: Category;
 };
-export interface CategoryFormValues {
+export type CategoryFormValues = {
   name: string;
   abbr: string;
-}
+};
 
 //=====SubCategory
 export interface SubCategoryFormValues {

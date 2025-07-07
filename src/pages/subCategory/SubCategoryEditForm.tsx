@@ -21,7 +21,7 @@ export const SubCategoryEditForm: React.FC<SubCategoryEditFormProps> = ({
   initialValues,
   loading,
 }) => {
-  const methods = useForm({
+  const methods = useForm<SubCategoryFormValues>({
     resolver: yupResolver(subCategoryFormSchema),
     defaultValues: initialValues,
   });
