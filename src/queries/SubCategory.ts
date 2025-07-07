@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-import { CategoryFragments } from "./CategoryFragments";
+import { CategoryFragments } from './CategoryFragments';
 
 export const SUB_CATEGORY_BY_ID = gql`
   query SubCategoryById($id: ID!) {

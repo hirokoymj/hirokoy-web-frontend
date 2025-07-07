@@ -1,0 +1,134 @@
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from 'tss-react/mui';
+import { Theme } from '@mui/material/styles';
+
+import { CURRENT_WEATHER_BY_CITY } from 'queries/Weather';
+//import { GoogleMap } from 'components/GoogleMap/GoogleMap';
+import { CurrentWeatherSkeleton } from 'components/Skeleton/WeatherSkeleton';
+
+const useStyles = makeStyles()((theme: Theme) => ({
+  root: {
+    boxShadow: 'none',
+    padding: '32px !important',
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: '16px !important',
+    },
+  },
+  weatherIcon: {
+    marginRight: theme.spacing(1),
+  },
+  cityCountry: {
+    fontWeight: 500,
+    marginBottom: theme.spacing(2),
+  },
+  weatherInfo: {
+    height: 'auto',
+    padding: theme.spacing(3),
+    textAlign: 'center',
+  },
+}));
+
+interface CityInfo {
+  name: string;
+  country: string;
+  lat: string;
+  lon: string;
+}
+type Temperature = {
+  day: number;
+  min: number;
+  max: number;
+};
+
+type Weather = {
+  dt: number;
+  condition: string;
+  description: string;
+  feelsLike: string;
+  icon: string;
+  temperature: Temperature;
+  humidity: number;
+};
+interface CurrentWeatherByCityDataResponse {
+  currentWeatherByCity: {
+    id: string;
+    cityInfo: CityInfo;
+    weather: Weather;
+  };
+}
+
+interface CurrentWeatherInfoProps {
+  city: string;
+  unit: 'metric' | 'imperial';
+}
+
+export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({ city, unit }) => {
+  const { classes } = useStyles();
+  const { data, loading } = useQuery<CurrentWeatherByCityDataResponse>(CURRENT_WEATHER_BY_CITY, {
+    variables: {
+      city,
+      unit,
+    },
+  });
+  !loading && console.log(data);
+  const cityInfo =
+    !loading && data?.currentWeatherByCity?.cityInfo ? data.currentWeatherByCity.cityInfo : ({} as CityInfo);
+  const weather = !loading && data?.currentWeatherByCity?.weather ? data.currentWeatherByCity.weather : ({} as Weather);
+  const { lat, lon, name, country } = cityInfo;
+  const { temperature, description, humidity, icon, feelsLike } = weather;
+  const unit_format = unit === 'metric' ? 'C' : 'F';
+  console.log(`${lat}, ${lon}`);
+
+  return (
+    <>
+      {loading ? (
+        <CurrentWeatherSkeleton />
+      ) : (
+        <Grid container spacing={3}>
+          <Grid size={{ xs: 12, md: 5 }}>
+            <Paper className={classes.weatherInfo}>
+              <Grid container>
+                <Grid size={12}>
+                  <Typography variant="h4" gutterBottom className={classes.cityCountry}>
+                    {name}, {country}
+                  </Typography>
+                </Grid>
+                <Grid size={12}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      marginBottom: '16px',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <img
+                      src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                      width="50"
+                      height="50"
+                      alt=""
+                      className={classes.weatherIcon}
+                    />
+                    <Typography variant="h4">
+                      {temperature.day | 0}&deg;{unit_format}
+                    </Typography>
+                  </div>
+                </Grid>
+                <Grid size={12}>
+                  <Typography variant="body1">
+                    Feels like {feelsLike}&deg;{unit_format}. {description}
+                  </Typography>
+                  <Typography variant="body1">{`Humidity: ${humidity}%`}</Typography>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      )}
+    </>
+  );
+};

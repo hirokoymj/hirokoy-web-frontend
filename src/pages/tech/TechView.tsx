@@ -32,19 +32,19 @@ const TechCard: React.FC<TechCardProps> = ({ mappedData }) => {
         <div key={key}>
           <Typography variant="h5">{key}</Typography>
           {arrayValues.map((d) => (
-            <p key={d.id}>
+            <div key={d.id}>
               <Link
                 href={d.url}
                 target="_blank"
                 rel="noreferrer"
                 color="secondary"
                 underline="none"
-                style={{ display: 'block', padding: '5px 0' }}
+                style={{ display: 'block', padding: '15px 0' }}
               >
                 {d.title}
               </Link>
               <Divider />
-            </p>
+            </div>
           ))}
         </div>
       ))}

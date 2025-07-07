@@ -86,9 +86,9 @@ export const DailyForecast: React.FC<DailyForecastProps> = ({ city, unit }) => {
     },
   });
 
-  console.log(data);
+  //console.log(data);
   const { forecastList } = !loading && data?.dailyForecast ? data.dailyForecast : { forecastList: [] };
-  console.log(forecastList);
+  //console.log(forecastList);
 
   const mappedData = forecastList.map((forecast) => {
     const {

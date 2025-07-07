@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import RoomIcon from '@mui/icons-material/Room';
 
 //import { config } from 'config/config';
 import { config } from '../../config/config';
@@ -7,13 +8,13 @@ import { config } from '../../config/config';
 interface MarkerProps {
   geo_lat: number;
   geo_lon: number;
-  children: React.ReactNode;
+  //children: React.ReactNode;
 }
 
-export const GoogleMap: FC<MarkerProps> = ({
+export const GoogleMap: React.FC<MarkerProps> = ({
   geo_lat = config.geoLocation.LOS_ANGELES.lat,
   geo_lon = config.geoLocation.LOS_ANGELES.lon,
-  children,
+  //children,
 }) => {
   return (
     <GoogleMapReact
@@ -23,24 +24,7 @@ export const GoogleMap: FC<MarkerProps> = ({
       center={{ lat: geo_lat, lng: geo_lon }}
       zoom={10}
     >
-      {children}
+      <RoomIcon />
     </GoogleMapReact>
   );
 };
-
-// const MyComponent = () => {
-//   render(
-//     <Grid size={{ xs: 12, md: 7 }}>
-//       <div
-//         style={{
-//           height: '100%',
-//           width: '100%',
-//         }}
-//       >
-//         <GoogleMap geo_lat={123} geo_lon={123}>
-//           <RoomIcon color="error" fontSize="large" lat={lat} lng={lon} />
-//         </GoogleMap>
-//       </div>
-//     </Grid>,
-//   );
-// };

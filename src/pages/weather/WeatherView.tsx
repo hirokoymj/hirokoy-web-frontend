@@ -4,7 +4,7 @@ import { Theme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 
 import { DailyForecast } from 'pages/weather/DailyForcast';
-//import { CurrentWeatherInfo } from 'pages/weather/CurrentWeatherInfo';
+import { CurrentWeatherInfo } from 'pages/weather/CurrentWeatherInfo';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
@@ -28,9 +28,9 @@ export const WeatherView = () => {
   return (
     <>
       <Grid container className={classes.root} spacing={2}>
-        {/* <Grid size={12}>
+        <Grid size={12}>
           <CurrentWeatherInfo city={city} unit={unit} />
-        </Grid> */}
+        </Grid>
         <Grid size={12}>
           <DailyForecast city={city} unit={unit} />
         </Grid>
