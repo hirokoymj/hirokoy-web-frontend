@@ -13,6 +13,7 @@
 - Redux Toolkit v2.8
 - React Hook Form
 - Apollo Client v3 (GraphQL)
+- Material UI (version 7)
 - Google Map API
 - Firebase Authentication for Google
 

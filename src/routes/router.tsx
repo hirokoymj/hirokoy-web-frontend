@@ -21,7 +21,10 @@ import { NotFound } from 'pages/base/NotFound';
 const Demo = () => {
   return <h1>DEMO</h1>;
 };
-
+//path=":city"
+//path=":categoryId"
+//path=":abbr"
+//path=":topicId/:categoryId"
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -33,10 +36,10 @@ export const router = createBrowserRouter(
       <Route path="demo" element={<Demo />} />
       <Route path="test" element={<ComponentTest />} />
       <Route path="category" element={<CategoryLayout />}>
-        <Route path=":id" element={<CategoryEditView />} />
+        <Route path=":categoryId" element={<CategoryEditView />} />
       </Route>
       <Route path="subCategory" element={<SubCategoryLayout />}>
-        <Route path=":id" element={<SubCategoryEditView />} />
+        <Route path=":subCategoryId" element={<SubCategoryEditView />} />
       </Route>
       <Route path="topic" element={<TopicLayout />}>
         <Route path=":topicId/:categoryId" element={<TopicEditView />} />

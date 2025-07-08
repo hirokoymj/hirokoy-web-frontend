@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
 import { CategoryEditForm } from 'pages/category/CategoryEditForm';
 import { useCategoryEditForm } from 'hooks/useCategoryEditForm';
+import { RouteParams } from 'pages/type/types';
 
 export const CategoryEditView = () => {
-  const { id } = useParams<{ id: string }>();
+  const { categoryId } = useParams<RouteParams>();
   const [open, setOpen] = useState<boolean>(true);
   const navigate = useNavigate();
-  const { onSubmit, initialValues, loading, error } = useCategoryEditForm(id!);
+  const { onSubmit, initialValues, loading, error } = useCategoryEditForm(categoryId);
 
   const onClose = () => {
     setOpen(false);
@@ -24,7 +25,7 @@ export const CategoryEditView = () => {
       {loading ? (
         <p>...loading</p>
       ) : (
-        <SimpleDrawer open={open} title="Edit Category" onClose={onClose} /*submitLabel="Edit"*/>
+        <SimpleDrawer open={open} title="Edit Category" onClose={onClose}>
           <CategoryEditForm onSubmit={onSubmit} initialValues={initialValues} loading={loading} />
         </SimpleDrawer>
       )}

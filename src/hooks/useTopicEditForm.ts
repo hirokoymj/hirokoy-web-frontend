@@ -10,7 +10,7 @@ import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
 import { makeDropdownOptions } from 'components/FormController/common';
 import { SubCategoryByCategoryData, TopicFormValues, TopicByIdData, CategoryAllData } from 'pages/type/types';
 
-export const useTopicEditForm = (topicId: string, categoryId: string) => {
+export const useTopicEditForm = (topicId = '', categoryId = '') => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [updateTopic] = useMutation(UPDATE_TOPIC);
@@ -19,7 +19,7 @@ export const useTopicEditForm = (topicId: string, categoryId: string) => {
     SUB_CATEGORY_BY_CATEGORY,
     {
       variables: {
-        categoryId: categoryId === 'undefined' ? '' : categoryId,
+        categoryId,
       },
     },
   );

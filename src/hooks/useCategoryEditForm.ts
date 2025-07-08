@@ -8,7 +8,7 @@ import { CATEGORY_BY_ID } from 'queries/Category';
 import { CATEGORY_ALL } from 'queries/Category';
 import { CategoryByIdData, CategoryFormValues } from 'pages/type/types';
 
-export const useCategoryEditForm = (id: string) => {
+export const useCategoryEditForm = (categoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [updateCategory, { error }] = useMutation(UPDATE_CATEGORY, {
@@ -20,7 +20,7 @@ export const useCategoryEditForm = (id: string) => {
     error: error_category_by_id,
   } = useQuery<CategoryByIdData>(CATEGORY_BY_ID, {
     variables: {
-      id,
+      id: categoryId,
     },
   });
 
@@ -35,7 +35,7 @@ export const useCategoryEditForm = (id: string) => {
       const { name, abbr } = values;
       await updateCategory({
         variables: {
-          id,
+          id: categoryId,
           input: {
             name,
             abbr,

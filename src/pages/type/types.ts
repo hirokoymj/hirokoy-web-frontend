@@ -1,3 +1,9 @@
+//path=":city"
+//path=":categoryId"
+//path=":abbr"
+//path=":topicId/:categoryId"
+export type RouteParams = 'city' | 'categoryId' | 'abbr' | 'topicId' | 'subCategoryId';
+
 //=====Category
 export interface Category {
   id: string;

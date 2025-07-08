@@ -14,12 +14,7 @@ import {
   DropdownOption,
 } from 'pages/type/types';
 
-// interface DropdownOption {
-//   value: string;
-//   label: string;
-// }
-
-export const useSubCategoryEditForm = (subCategoryId: string) => {
+export const useSubCategoryEditForm = (subCategoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [updateSubCategory] = useMutation(UPDATE_SUB_CATEGORY);
