@@ -19,7 +19,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
     color: '#939AA8',
     '&:hover': {
       color: theme.palette.secondary.dark,
-      //backgroundColor: theme.palette.accent.main,
       backgroundColor: theme.palette.primary.main,
     },
   },
@@ -48,7 +47,10 @@ export const PageFooter = () => {
       <Typography variant="body2" color="textSecondary">
         &copy; {new Date().getFullYear()} hirokoymj.com All rights reserved.
       </Typography>
-      <IconButtonLink icon={<GitHubIcon fontSize="large" />} to="https://github.com/hirokoymj/hiroko-frontend" />
+      <IconButtonLink
+        icon={<GitHubIcon fontSize="large" />}
+        to="https://github.com/hirokoymj/hirokoy-web-frontend-ts"
+      />
       <IconButtonLink icon={<LinkedInIcon fontSize="large" />} to="https://www.linkedin.com/in/hirokoyamaji/" />
     </footer>
   );

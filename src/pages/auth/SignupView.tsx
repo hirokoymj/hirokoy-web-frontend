@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
@@ -7,14 +9,13 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { makeStyles } from 'tss-react/mui';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Theme } from '@mui/material/styles';
 
 import { FormInputText } from 'components/Forms/FormInputText';
 import { useAuth, doCreateUserWithEmailAndPassword } from 'contexts/authContext';
-import { registerFormSchema } from '../validation/formValidations';
+import { registerFormSchema } from 'pages/validation/formValidations';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   paper: {
     padding: theme.spacing(4),
     textAlign: 'center',
@@ -30,13 +31,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+interface RegisterFormValues {
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
 export const SignupView = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { userLoggedIn } = useAuth();
-  const [error, setError] = useState('');
-  const methods = useForm({
+  const [error, setError] = useState<string>('');
+  const methods = useForm<RegisterFormValues>({
     resolver: yupResolver(registerFormSchema),
-    defaultValues: { email: '', password: '', confirmPassword: '' },
+    defaultValues: { email: '', password: '', passwordConfirmation: '' },
   });
 
   const {
@@ -44,8 +51,7 @@ export const SignupView = () => {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async ({ email, password }) => {
-    console.log('onSubmit');
+  const onSubmit = async ({ email, password }: { email: string; password: string }) => {
     await doCreateUserWithEmailAndPassword(email, password).catch((error) => {
       setError(error.code);
     });
