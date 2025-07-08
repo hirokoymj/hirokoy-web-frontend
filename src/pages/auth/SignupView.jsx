@@ -1,27 +1,26 @@
-import React, { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
-import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { FormInputText } from "components/Forms/FormInputText";
+import React, { useState } from 'react';
+import { Navigate, Link } from 'react-router-dom';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import { makeStyles } from 'tss-react/mui';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useAuth } from "contexts/authContext";
-import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
-import { registerFormSchema } from "../validation/formValidations";
+import { FormInputText } from 'components/Forms/FormInputText';
+import { useAuth, doCreateUserWithEmailAndPassword } from 'contexts/authContext';
+import { registerFormSchema } from '../validation/formValidations';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(4),
-    textAlign: "center",
+    textAlign: 'center',
   },
   error: {
-    color: "red",
+    color: 'red',
   },
   submit: {
     marginBottom: theme.spacing(4),
@@ -34,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
 export const SignupView = () => {
   const classes = useStyles();
   const { userLoggedIn } = useAuth();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const methods = useForm({
     resolver: yupResolver(registerFormSchema),
-    defaultValues: { email: "", password: "", confirmPassword: "" },
+    defaultValues: { email: '', password: '', confirmPassword: '' },
   });
 
   const {
@@ -46,7 +45,7 @@ export const SignupView = () => {
   } = methods;
 
   const onSubmit = async ({ email, password }) => {
-    console.log("onSubmit");
+    console.log('onSubmit');
     await doCreateUserWithEmailAndPassword(email, password).catch((error) => {
       setError(error.code);
     });
@@ -54,31 +53,22 @@ export const SignupView = () => {
 
   return (
     <>
-      {userLoggedIn && <Navigate to={"/"} replace={true} />}
+      {userLoggedIn && <Navigate to={'/'} replace={true} />}
       <Container maxWidth="xs" component={Paper} className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign Up
-        </Typography>{" "}
+        </Typography>{' '}
         <Box component="p" className={classes.error}>
           {error}
         </Box>
         <FormProvider {...methods}>
-          <FormInputText
-            label="Email"
-            name="email"
-            style={{ marginBottom: "16px" }}
-          />
-          <FormInputText
-            label="Password"
-            name="password"
-            type="password"
-            style={{ marginBottom: "16px" }}
-          />
+          <FormInputText label="Email" name="email" style={{ marginBottom: '16px' }} />
+          <FormInputText label="Password" name="password" type="password" style={{ marginBottom: '16px' }} />
           <FormInputText
             label="Confirm Password"
             name="passwordConfirmation"
             type="password"
-            style={{ marginBottom: "16px" }}
+            style={{ marginBottom: '16px' }}
           />
           <Button
             type="submit"
@@ -86,13 +76,14 @@ export const SignupView = () => {
             color="primary"
             fullWidth
             className={classes.submit}
-            onClick={handleSubmit(onSubmit)}>
-            {isSubmitting ? "Signing Up..." : "Sign Up"}
+            onClick={handleSubmit(onSubmit)}
+          >
+            {isSubmitting ? 'Signing Up...' : 'Sign Up'}
           </Button>
         </FormProvider>
         <Divider className={classes.divider} />
         <Typography align="center">
-          Already have an account? <Link to={"/login"}>Login</Link>
+          Already have an account? <Link to={'/login'}>Login</Link>
         </Typography>
       </Container>
     </>

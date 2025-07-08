@@ -65,7 +65,7 @@ export const SimpleDrawer: FC<SimpleDrawerProps> = ({ open, title, onClose, chil
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-      <DialogContent>{children}</DialogContent>
+      <DialogContent style={{ overflowY: 'visible' }}>{children}</DialogContent>
     </Dialog>
   );
 };

@@ -1,12 +1,11 @@
-//import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from 'contexts/authContext';
-import { doSignOut } from '../../firebase/auth';
-import { RouterButton } from 'components/Buttons/RouterButton';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { makeStyles } from 'tss-react/mui';
-import { Theme } from '@mui/material/styles';
+
+import { RouterButton } from 'components/Buttons/RouterButton';
+import { useAuth } from 'contexts/authContext';
+import { doSignOut } from 'contexts/authContext';
 
 const useStyles = makeStyles()((theme) => ({
   button: {

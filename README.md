@@ -15,7 +15,7 @@
 - Apollo Client v3 (GraphQL)
 - Material UI (version 7)
 - Google Map API
-- Firebase Authentication for Google
+- Google Account authentication with Firebase
 
 **Backend** - https://github.com/hirokoymj/hiroko-web-backend-new
 
@@ -35,13 +35,7 @@
 
 1. Firebase console -> Add app -> Web -> Add Firebase to your web app -> Authentication -> Add new provider -> Google -> `npm install firebase` -> Copy Firebase config code in your app.
 2. GCP console -> Identity Platform -> Providers -> Edit Google -> Add domain (www.hirokoymj.com)
-
-- [auth.js](./src/firebase/auth.js)
-- [firebase.js](./src/firebase/firebase.js)
-- [AuthProvider](./src/contexts/authContext/index.js)
-- [LoginButton.jsx](./src/pages/auth/LoginButton.jsx)
-
-<br />
+3. [contexts/authContext.jsx](./src/contexts/authContext.jsx)
 
 ![](./src/assets/gcp-IdentityPlatform.png)
 

@@ -13,7 +13,7 @@ import { Theme } from '@mui/material/styles';
 import { Logo } from 'components/Logo/Logo';
 import { LeftNaviagtion } from 'components/Navigation/ListItemLink';
 import { ThemeSwitch } from 'components/Switchs/Switch';
-//import { LoginButton } from 'pages/auth/LoginButton';
+import { LoginButton } from 'pages/auth/LoginButton';
 
 const drawerWidth = 240;
 
@@ -118,7 +118,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ open, handleDrawerOpen, 
           </IconButton>
           <Logo />
           <ThemeSwitch />
-          {/* <LoginButton /> */}
+          <LoginButton />
         </Toolbar>
       </AppBar>
       <Drawer
