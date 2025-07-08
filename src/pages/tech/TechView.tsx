@@ -8,7 +8,7 @@ import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import { TOPIC_BY_CATEGORY_ABBR } from 'queries/Topic';
 import { TechCardSkeleton } from 'components/Skeleton/LoadingSkeleton';
-import { TopicByIdCategoryAbbrData, Category, SubCategory } from 'pages/type/types';
+import { TopicByIdCategoryAbbrData, Category, SubCategory, AbbrParams } from 'pages/type/types';
 
 interface TechCardProps {
   mappedData: {
@@ -53,7 +53,7 @@ const TechCard: React.FC<TechCardProps> = ({ mappedData }) => {
 };
 
 export const TechView = () => {
-  const { abbr } = useParams<{ abbr: string }>();
+  const { abbr } = useParams<AbbrParams>();
   const { data, loading } = useQuery<TopicByIdCategoryAbbrData>(TOPIC_BY_CATEGORY_ABBR, {
     variables: {
       abbr,

@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
 import { SubCategoryEditForm } from './SubCategoryEditForm';
 import { useSubCategoryEditForm } from 'hooks/useSubCategoryEditForm';
-import { RouteParams } from 'pages/type/types';
+import { SubCategoryParams } from 'pages/type/types';
 
 export const SubCategoryEditView = () => {
-  const { subCategoryId } = useParams<RouteParams>();
+  const { subCategoryId } = useParams<SubCategoryParams>();
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(true);
   const { onSubmit, initialValues, loading, category_options } = useSubCategoryEditForm(subCategoryId!);

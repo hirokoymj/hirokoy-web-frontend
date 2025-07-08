@@ -74,7 +74,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
       width: theme.spacing(9),
     },
   },
-  //  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100vh',
@@ -107,7 +106,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ open, handleDrawerOpen, 
   return (
     <>
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar className={classes.toolbar} style={{ minHeight: '64px' }}>
           <IconButton
             edge="start"
             color="inherit"

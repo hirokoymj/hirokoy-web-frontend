@@ -1,8 +1,24 @@
 //path=":city"
 //path=":categoryId"
 //path=":abbr"
+//path=":subCategoryId"
 //path=":topicId/:categoryId"
-export type RouteParams = 'city' | 'categoryId' | 'abbr' | 'topicId' | 'subCategoryId';
+export type CityParams = {
+  city: string;
+};
+export type CategoryParams = {
+  categoryId: string;
+};
+export type AbbrParams = {
+  abbr: string;
+};
+export type SubCategoryParams = {
+  subCategoryId: string;
+};
+export type TopicAndCategoryParams = {
+  topicId: string;
+  categoryId: string;
+};
 
 //=====Category
 export interface Category {

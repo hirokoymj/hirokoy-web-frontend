@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TopicEditForm } from 'pages/topic/TopicEditForm';
 import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
 import { useTopicEditForm } from 'hooks/useTopicEditForm';
-import { RouteParams } from 'pages/type/types';
+import { TopicAndCategoryParams } from 'pages/type/types';
 
 export const TopicEditView = () => {
-  const { topicId, categoryId } = useParams<RouteParams>();
+  const { topicId, categoryId } = useParams<TopicAndCategoryParams>();
   const [open, setOpen] = useState<boolean>(true);
   const navigate = useNavigate();
   const { loading, category_options, subCategory_options, onSubmit, defaultValues } = useTopicEditForm(
