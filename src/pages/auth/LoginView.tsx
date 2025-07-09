@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Navigate, Link } from 'react-router-dom';
+//import { Navigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import Container from '@mui/material/Container';
@@ -12,7 +13,7 @@ import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
 import { FormInputText } from 'components/Forms/FormInputText';
-import { useAuth, doSignInWithEmailAndPassword, doSignInWithGoogle } from 'contexts/authContext';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from 'contexts/authContext';
 import { loginFormSchema } from 'pages/validation/formValidations';
 import { GoogleSignInBtn } from 'pages/auth/GoogleSignInBtn';
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 export const LoginView = () => {
   const { classes } = useStyles();
-  const { userLoggedIn } = useAuth();
+  //const { displayName, isLoggedIn } = useAuth();
   const [error, setError] = useState<string>('');
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
@@ -64,7 +65,7 @@ export const LoginView = () => {
 
   return (
     <>
-      {userLoggedIn && <Navigate to={'/'} replace={true} />}
+      {/* {isLoggedIn && <Navigate to={'/'} replace={true} />} */}
       <Container maxWidth="xs" component={Paper} className={classes.paper}>
         <Typography component="h1" variant="h5">
           Log in

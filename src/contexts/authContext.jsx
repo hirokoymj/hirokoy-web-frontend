@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
+  onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -28,7 +28,7 @@ const AuthContext = createContext(undefined);
 export function useAuth() {
   const user = useContext(AuthContext);
   if (user === undefined) {
-    throw new Error('useUserContext must be used with a DashboardContext');
+    throw new Error('useAuth must be used when to access user');
   }
   return user;
 }
@@ -39,21 +39,20 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, initializeUser);
-    return unsubscribe;
-  }, []);
-
-  async function initializeUser(user) {
-    if (user) {
-      const { displayName, email } = user;
-      setCurrentUser({ displayName, email });
-      setUserLoggedIn(true);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { displayName, email } = user;
+        setCurrentUser({ displayName, email });
+        setUserLoggedIn(true);
+      } else {
+        setCurrentUser(null);
+        setUserLoggedIn(false);
+      }
+    });
     setLoading(false);
-  }
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   const value = {
     userLoggedIn,

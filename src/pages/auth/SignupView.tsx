@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Container from '@mui/material/Container';
@@ -39,12 +39,13 @@ interface RegisterFormValues {
 
 export const SignupView = () => {
   const { classes } = useStyles();
-  const { userLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
   const [error, setError] = useState<string>('');
   const methods = useForm<RegisterFormValues>({
     resolver: yupResolver(registerFormSchema),
     defaultValues: { email: '', password: '', passwordConfirmation: '' },
   });
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -52,14 +53,18 @@ export const SignupView = () => {
   } = methods;
 
   const onSubmit = async ({ email, password }: { email: string; password: string }) => {
-    await doCreateUserWithEmailAndPassword(email, password).catch((error) => {
-      setError(error.code);
-    });
+    await doCreateUserWithEmailAndPassword(email, password)
+      .then(() => {
+        if (isLoggedIn) navigate('/');
+      })
+      .catch((error) => {
+        setError(error.code);
+      });
   };
 
   return (
     <>
-      {userLoggedIn && <Navigate to={'/'} replace={true} />}
+      {/* {isLoggedIn && <Navigate to={'/'} replace={true} />} */}
       <Container maxWidth="xs" component={Paper} className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign Up
