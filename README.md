@@ -52,7 +52,18 @@ maps-backend.googleapis.com                  Maps JavaScript API
 
 ![](./src/assets/gcp-google-map-api.png)
 
-## Deploy this app to Heroku
+## Deploy to Heroku
+
+1. Installing the serve package. `npm install serve`.
+2. Changing package.json.
+
+   ```js
+   "start": "serve -s build",
+   "dev": "react-scripts start",
+   "build": "react-scripts build"
+   ```
+
+3. Deploy the app to Heroku
 
 ```js
 git heroku login
