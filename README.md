@@ -56,11 +56,9 @@ maps-backend.googleapis.com                  Maps JavaScript API
 
 ```js
 git heroku login
-git push heroku master
-
+git push heroku main
+// Check remote repo
 git remote -v
-heroku  https://git.heroku.com/hiroko-web-frontend.git (fetch)
-heroku  https://git.heroku.com/hiroko-web-frontend.git (push)
 ```
 
 ## References
