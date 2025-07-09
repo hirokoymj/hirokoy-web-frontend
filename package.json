@@ -1,6 +1,9 @@
 {
-  "name": "my-react-app",
+  "name": "hiroko-web-frontend-ts",
   "version": "0.1.0",
+  "engines": {
+    "node": "22.x"
+  },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.13.8",
