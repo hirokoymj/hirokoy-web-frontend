@@ -63,17 +63,15 @@ git remote -v
 
 ## References
 
-- https://redux.js.org/introduction/getting-started
-- https://fir-ui-demo-84a6c.firebaseapp.com/
-- https://github.com/firebase/firebaseui-web
-- https://firebase.google.com/docs/reference/js
-- https://react-hook-form.com/
-- https://github.com/jquense/yup
-- https://firebase.google.com/docs/auth/web/google-signin
-- https://reactrouter.com/home
-- https://react.dev/reference/react/createContext
-- https://mui.com/material-ui/getting-started/
-- https://devcenter.heroku.com/articles/heroku-cli
-- https://stackoverflow.com/questions/73158715/how-do-i-set-a-route-as-an-index-if-it-requires-a-parameter
-- https://stackoverflow.com/questions/6899582/i-change-the-capitalization-of-a-directory-and-git-doesnt-seem-to-pick-up-on-it
-- [Offical doc: Signing in users with Google](https://cloud.google.com/identity-platform/docs/web/google)
+- [Built-in React Hooks](https://react.dev/reference/react/hooks)
+- [React API - CreateContext](https://react.dev/reference/react/createContext)
+- [React API - memo](https://react.dev/reference/react/memo)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Hook Form Typescript](https://react-hook-form.com/ts)
+- [React TypeScript cheetsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/examples/)
+- [Redux Toolkit Quikc Start/Install](https://redux-toolkit.js.org/tutorials/quick-start)
+- [TypeScript with Apollo Client](https://www.apollographql.com/docs/react/development-testing/static-typing)
+- [Queries](https://www.apollographql.com/docs/react/data/queries)
+- [Mutations](https://www.apollographql.com/docs/react/data/mutations)
+- [GCP Signing in user with Google](https://cloud.google.com/identity-platform/docs/web/google)
+- [Material UI v7](https://mui.com/material-ui/getting-started/)
