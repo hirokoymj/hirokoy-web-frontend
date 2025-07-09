@@ -1,5 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useSnackbar } from 'notistack';
+import { SubmitHandler } from 'react-hook-form';
 
 import { CREATE_SUB_CATEGORY } from 'mutations/SubCategory';
 import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
@@ -16,7 +17,7 @@ export const useSubCategoryForm = () => {
   const { data, loading } = useQuery<CategoryAllData>(CATEGORY_ALL);
   const category_options = makeDropdownOptions(data, 'categoryAll', loading);
 
-  const onSubmit = async (values: SubCategoryFormValues) => {
+  const onSubmit: SubmitHandler<SubCategoryFormValues> = async (values) => {
     try {
       const { name, categoryId, order } = values;
       await createSubCategory({

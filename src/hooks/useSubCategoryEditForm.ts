@@ -2,6 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import get from 'lodash/get';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler } from 'react-hook-form';
 
 import { UPDATE_SUB_CATEGORY } from 'mutations/SubCategory';
 import { SUB_CATEGORY_BY_ID } from 'queries/SubCategory';
@@ -36,7 +37,7 @@ export const useSubCategoryEditForm = (subCategoryId = '') => {
     return { value: id, label: name };
   });
 
-  const onSubmit = async (values: SubCategoryFormValues) => {
+  const onSubmit: SubmitHandler<SubCategoryFormValues> = async (values) => {
     try {
       const { name, categoryId, order } = values;
       await updateSubCategory({

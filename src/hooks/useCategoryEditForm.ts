@@ -2,6 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import get from 'lodash/get';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler } from 'react-hook-form';
 
 import { UPDATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_BY_ID } from 'queries/Category';
@@ -30,7 +31,7 @@ export const useCategoryEditForm = (categoryId = '') => {
     abbr: get(data, 'categoryById.abbr', ''),
   };
 
-  const onSubmit = async (values: CategoryFormValues) => {
+  const onSubmit: SubmitHandler<CategoryFormValues> = async (values) => {
     try {
       const { name, abbr } = values;
       await updateCategory({

@@ -1,5 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useSnackbar } from 'notistack';
+import { SubmitHandler } from 'react-hook-form';
+
 import { CREATE_TOPIC } from 'mutations/Topic';
 import { CATEGORY_ALL } from 'queries/Category';
 import { TOPIC_ALL } from 'queries/Topic';
@@ -34,7 +36,7 @@ export const useTopicForm = (categoryId: string) => {
   // Make dropdown
   const subCategory_options = makeDropdownOptions(subCategoryData, 'subCategoryByCategory', subCategoryLoading);
 
-  const onSubmit = async (values: TopicFormValues) => {
+  const onSubmit: SubmitHandler<TopicFormValues> = async (values) => {
     try {
       await createTopic({
         variables: {

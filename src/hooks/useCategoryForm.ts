@@ -1,5 +1,6 @@
 import { QueryOptions, useMutation } from '@apollo/client';
 import { useSnackbar } from 'notistack';
+import { SubmitHandler } from 'react-hook-form';
 
 import { CREATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_ALL } from 'queries/Category';
@@ -12,7 +13,7 @@ export const useCategoryForm = () => {
     refetchQueries: [{ query: CATEGORY_ALL } as QueryOptions<CategoryAllData>],
   });
 
-  const onSubmit = async (values: CategoryFormValues) => {
+  const onSubmit: SubmitHandler<CategoryFormValues> = async (values) => {
     try {
       await createCategory({
         variables: {
