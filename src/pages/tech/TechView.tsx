@@ -63,7 +63,6 @@ export const TechView = () => {
   });
 
   const mappedData: TechCardProps | {} = !loading ? groupBy(data?.topicByCategoryAbbr, 'subCategory.name') : {};
-  console.log(mappedData);
 
   return (
     <Grid container spacing={3} justifyContent="center" style={{ margin: '16px 0' }}>

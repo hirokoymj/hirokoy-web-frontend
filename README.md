@@ -63,15 +63,37 @@ git remote -v
 
 ## References
 
+**React.js**
+
 - [Built-in React Hooks](https://react.dev/reference/react/hooks)
 - [React API - CreateContext](https://react.dev/reference/react/createContext)
 - [React API - memo](https://react.dev/reference/react/memo)
+- [React TypeScript cheetsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/examples/)
+
+**React Router**
+
+- [React Router - useParams](https://reactrouter.com/6.30.1/hooks/use-params)
+- [React Router - createRoutesFromElements](https://reactrouter.com/6.30.1/utils/create-routes-from-elements)
+
+**React Hook Form**
+
 - [React Hook Form](https://react-hook-form.com/)
 - [React Hook Form Typescript](https://react-hook-form.com/ts)
-- [React TypeScript cheetsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/examples/)
+
+**Redux**
+
 - [Redux Toolkit Quikc Start/Install](https://redux-toolkit.js.org/tutorials/quick-start)
 - [TypeScript with Apollo Client](https://www.apollographql.com/docs/react/development-testing/static-typing)
+
+**Apollo Client**
+
 - [Queries](https://www.apollographql.com/docs/react/data/queries)
 - [Mutations](https://www.apollographql.com/docs/react/data/mutations)
+
+**GCP Cloud library**
+
 - [GCP Signing in user with Google](https://cloud.google.com/identity-platform/docs/web/google)
+
+**Material UI**
+
 - [Material UI v7](https://mui.com/material-ui/getting-started/)
