@@ -38,7 +38,7 @@ export const TechLayout = () => {
 
   return (
     <Paper className={classes.root}>
-      <Tabs value={tab} onChange={handleTabChange} indicatorColor="primary" textColor="primary" centered>
+      <Tabs value={tab} onChange={handleTabChange} indicatorColor="primary" textColor="primary" variant="fullWidth">
         <Tab label={TabNames.React} component={Link} to="react" value={0} />
         <Tab label={TabNames.JavaScript} component={Link} to="js" value={1} />
         <Tab label={TabNames.ts} component={Link} to="ts" value={2} />

@@ -4,7 +4,7 @@ import Switch from '@mui/material/Switch';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 //import { useAppSelector, useAppDispatch } from 'redux/hooks';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks'; //must use relative path
 //import { setThemeName } from 'redux/theme/themeSlice';
 import { setThemeName } from '../../redux/theme/themeSlice';
 

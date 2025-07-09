@@ -30,7 +30,9 @@ const TechCard: React.FC<TechCardProps> = ({ mappedData }) => {
     <div>
       {Object.entries(mappedData).map(([key, arrayValues]) => (
         <div key={key}>
-          <Typography variant="h5">{key}</Typography>
+          <Typography variant="h5" style={{ marginTop: '15px' }}>
+            {key}
+          </Typography>
           {arrayValues.map((d) => (
             <div key={d.id}>
               <Link
