@@ -1,7 +1,8 @@
 import React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { useAppSelector } from 'redux/hooks';
+//import { useAppSelector } from 'redux/hooks';
+import { useAppSelector } from '../redux/hooks'; //Redux cannot import using absolute path.
 import { defaultTheme } from 'styles/defaultTheme';
 import { winterTheme } from 'styles/winterTheme';
 

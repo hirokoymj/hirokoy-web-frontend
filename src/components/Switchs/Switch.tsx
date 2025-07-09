@@ -3,8 +3,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
-import { useAppSelector, useAppDispatch } from 'redux/hooks';
-import { setThemeName } from 'redux/theme/themeSlice';
+//import { useAppSelector, useAppDispatch } from 'redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+//import { setThemeName } from 'redux/theme/themeSlice';
+import { setThemeName } from '../../redux/theme/themeSlice';
 
 enum PageTheme {
   Default = 'default',

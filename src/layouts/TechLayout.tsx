@@ -4,8 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Paper from '@mui/material/Paper';
 import { makeStyles } from 'tss-react/mui';
-import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { setActiveTab } from 'redux/techTab/techTabSlice';
+//import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+//import { setActiveTab } from 'redux/techTab/techTabSlice';
+import { setActiveTab } from '../redux/techTab/techTabSlice';
 
 enum TabNames {
   React = 'React.js',
