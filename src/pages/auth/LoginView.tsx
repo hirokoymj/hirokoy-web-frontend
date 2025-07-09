@@ -1,6 +1,5 @@
 import { useState } from 'react';
-//import { Navigate, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import Container from '@mui/material/Container';
@@ -35,12 +34,12 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 export const LoginView = () => {
   const { classes } = useStyles();
-  //const { displayName, isLoggedIn } = useAuth();
   const [error, setError] = useState<string>('');
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: { email: '', password: '' },
   });
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -48,13 +47,17 @@ export const LoginView = () => {
   } = methods;
 
   const onSubmit = async ({ email, password }: { email: string; password: string }) => {
-    await doSignInWithEmailAndPassword(email, password).catch((error) => {
-      if (error.code === 'auth/user-not-found') {
-        setError(`${error.code} - There is no user exist with that email`);
-      } else {
-        setError(`${error.code} `);
-      }
-    });
+    await doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        if (error.code === 'auth/user-not-found') {
+          setError(`${error.code} - There is no user exist with that email`);
+        } else {
+          setError(`${error.code} `);
+        }
+      });
   };
 
   const onGoogleSignIn = () => {
@@ -64,50 +67,47 @@ export const LoginView = () => {
   };
 
   return (
-    <>
-      {/* {isLoggedIn && <Navigate to={'/'} replace={true} />} */}
-      <Container maxWidth="xs" component={Paper} className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Log in
-        </Typography>{' '}
-        <Box component="p" className={classes.error}>
-          {error}
-        </Box>
-        <FormProvider {...methods}>
-          <FormInputText label="Email" name="email" style={{ marginBottom: '16px' }} />
-          <FormInputText label="Password" name="password" type="password" style={{ marginBottom: '16px' }} />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            className={classes.submit}
-            onClick={handleSubmit(onSubmit)}
-          >
-            {isSubmitting ? 'submitting' : 'submit'}
-          </Button>
-        </FormProvider>
-        <Typography align="center">
-          Don't have an account?
-          <Link to={'/signup'} className={classes.link}>
-            Sign up
-          </Link>
-        </Typography>
-        <Box
-          display="flex"
-          flexDirection="row"
-          m={0}
-          paddingBottom={2}
-          paddingTop={2}
-          justifyContent="space-between"
-          alignItems="center"
+    <Container maxWidth="xs" component={Paper} className={classes.paper}>
+      <Typography component="h1" variant="h5">
+        Log in
+      </Typography>{' '}
+      <Box component="p" className={classes.error}>
+        {error}
+      </Box>
+      <FormProvider {...methods}>
+        <FormInputText label="Email" name="email" style={{ marginBottom: '16px' }} />
+        <FormInputText label="Password" name="password" type="password" style={{ marginBottom: '16px' }} />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          className={classes.submit}
+          onClick={handleSubmit(onSubmit)}
         >
-          <Divider style={{ width: '45%' }} />
-          or
-          <Divider style={{ width: '45%' }} />
-        </Box>
-        <GoogleSignInBtn onClick={onGoogleSignIn} />
-      </Container>
-    </>
+          {isSubmitting ? 'submitting' : 'submit'}
+        </Button>
+      </FormProvider>
+      <Typography align="center">
+        Don't have an account?
+        <Link to={'/signup'} className={classes.link}>
+          Sign up
+        </Link>
+      </Typography>
+      <Box
+        display="flex"
+        flexDirection="row"
+        m={0}
+        paddingBottom={2}
+        paddingTop={2}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Divider style={{ width: '45%' }} />
+        or
+        <Divider style={{ width: '45%' }} />
+      </Box>
+      <GoogleSignInBtn onClick={onGoogleSignIn} />
+    </Container>
   );
 };

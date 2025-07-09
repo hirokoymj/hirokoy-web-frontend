@@ -12,7 +12,7 @@ import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
 import { FormInputText } from 'components/Forms/FormInputText';
-import { useAuth, doCreateUserWithEmailAndPassword } from 'contexts/authContext';
+import { doCreateUserWithEmailAndPassword } from 'contexts/authContext';
 import { registerFormSchema } from 'pages/validation/formValidations';
 
 const useStyles = makeStyles()((theme: Theme) => ({
@@ -39,7 +39,6 @@ interface RegisterFormValues {
 
 export const SignupView = () => {
   const { classes } = useStyles();
-  const { isLoggedIn } = useAuth();
   const [error, setError] = useState<string>('');
   const methods = useForm<RegisterFormValues>({
     resolver: yupResolver(registerFormSchema),
@@ -55,7 +54,7 @@ export const SignupView = () => {
   const onSubmit = async ({ email, password }: { email: string; password: string }) => {
     await doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        if (isLoggedIn) navigate('/');
+        navigate('/');
       })
       .catch((error) => {
         setError(error.code);
@@ -63,40 +62,37 @@ export const SignupView = () => {
   };
 
   return (
-    <>
-      {/* {isLoggedIn && <Navigate to={'/'} replace={true} />} */}
-      <Container maxWidth="xs" component={Paper} className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>{' '}
-        <Box component="p" className={classes.error}>
-          {error}
-        </Box>
-        <FormProvider {...methods}>
-          <FormInputText label="Email" name="email" style={{ marginBottom: '16px' }} />
-          <FormInputText label="Password" name="password" type="password" style={{ marginBottom: '16px' }} />
-          <FormInputText
-            label="Confirm Password"
-            name="passwordConfirmation"
-            type="password"
-            style={{ marginBottom: '16px' }}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            className={classes.submit}
-            onClick={handleSubmit(onSubmit)}
-          >
-            {isSubmitting ? 'Signing Up...' : 'Sign Up'}
-          </Button>
-        </FormProvider>
-        <Divider className={classes.divider} />
-        <Typography align="center">
-          Already have an account? <Link to={'/login'}>Login</Link>
-        </Typography>
-      </Container>
-    </>
+    <Container maxWidth="xs" component={Paper} className={classes.paper}>
+      <Typography component="h1" variant="h5">
+        Sign Up
+      </Typography>{' '}
+      <Box component="p" className={classes.error}>
+        {error}
+      </Box>
+      <FormProvider {...methods}>
+        <FormInputText label="Email" name="email" style={{ marginBottom: '16px' }} />
+        <FormInputText label="Password" name="password" type="password" style={{ marginBottom: '16px' }} />
+        <FormInputText
+          label="Confirm Password"
+          name="passwordConfirmation"
+          type="password"
+          style={{ marginBottom: '16px' }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          className={classes.submit}
+          onClick={handleSubmit(onSubmit)}
+        >
+          {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+        </Button>
+      </FormProvider>
+      <Divider className={classes.divider} />
+      <Typography align="center">
+        Already have an account? <Link to={'/login'}>Login</Link>
+      </Typography>
+    </Container>
   );
 };

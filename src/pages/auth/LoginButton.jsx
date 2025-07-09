@@ -31,7 +31,7 @@ export const LoginButton = () => {
             className={classes.button}
             onClick={() => {
               doSignOut().then(() => {
-                navigate('/login');
+                navigate('/');
               });
             }}
           >
