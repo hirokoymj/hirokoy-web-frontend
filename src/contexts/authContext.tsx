@@ -26,7 +26,7 @@ type User = {
   displayName: string;
   email: string;
 };
-type CurrentUser = {
+export type CurrentUser = {
   currentUser: User;
   userLoggedIn: boolean;
 };

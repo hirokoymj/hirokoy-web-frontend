@@ -5,7 +5,7 @@ import { makeStyles } from 'tss-react/mui';
 
 import { RouterButton } from 'components/Buttons/RouterButton';
 import { useAuth } from 'contexts/authContext';
-import { doSignOut } from 'contexts/authContext';
+import { doSignOut, CurrentUser } from 'contexts/authContext';
 
 const useStyles = makeStyles()((theme) => ({
   button: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles()((theme) => ({
 export const LoginButton = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const { userLoggedIn, currentUser } = useAuth();
+  const { userLoggedIn, currentUser } = useAuth() as CurrentUser;
   return (
     <>
       {userLoggedIn ? (
@@ -31,14 +31,14 @@ export const LoginButton = () => {
             className={classes.button}
             onClick={() => {
               doSignOut().then(() => {
-                navigate('/');
+                navigate('/login');
               });
             }}
           >
             Logout
           </Button>
           <Box component="span" m={1}>
-            {currentUser.displayName ? currentUser.displayName : currentUser.email}
+            {currentUser ? currentUser.displayName : ''}
           </Box>
         </>
       ) : (
