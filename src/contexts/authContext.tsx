@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -22,7 +22,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // 1. Create Context for User
-const AuthContext = createContext(undefined);
+type User = {
+  displayName: string;
+  email: string;
+};
+type CurrentUser = {
+  currentUser: User;
+  userLoggedIn: boolean;
+};
+const AuthContext = createContext<CurrentUser | null>(null);
 
 // 2. Create a Hooks - other components must use this when to access a user.
 export function useAuth() {
@@ -33,16 +41,16 @@ export function useAuth() {
   return user;
 }
 // 3. create AuthProvider
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { displayName, email } = user;
-        setCurrentUser({ displayName, email });
+        setCurrentUser({ displayName, email } as User);
         setUserLoggedIn(true);
       } else {
         setCurrentUser(null);
@@ -50,14 +58,13 @@ export function AuthProvider({ children }) {
       }
     });
     setLoading(false);
-    // Clean up the listener when the component unmounts
-    return () => unsubscribe();
-  }, []);
+    return () => unsubscribe(); //Call when the component is unmount.
+  }, [auth]);
 
   const value = {
     userLoggedIn,
     currentUser,
-  };
+  } as CurrentUser;
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 }
@@ -79,10 +86,10 @@ export const doSignInWithGoogle = async () => {
       console.log(`${errorCode}: ${errorMessage}, ${email}`);
     });
 };
-export const doCreateUserWithEmailAndPassword = async (email, password) => {
+export const doCreateUserWithEmailAndPassword = async (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const doSignInWithEmailAndPassword = (email, password) => {
+export const doSignInWithEmailAndPassword = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
