@@ -100,7 +100,7 @@ interface PageHeaderProps {
   handleDrawerClose?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ open, handleDrawerOpen, handleDrawerClose }) => {
+export const PageHeader = ({ open, handleDrawerOpen, handleDrawerClose }: PageHeaderProps) => {
   const { classes } = useStyles();
 
   return (

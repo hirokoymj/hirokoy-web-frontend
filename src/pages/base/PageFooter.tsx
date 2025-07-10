@@ -29,7 +29,7 @@ interface IconButtonLinkProps {
   to: string;
 }
 
-const IconButtonLink: React.FC<IconButtonLinkProps> = ({ icon, to }) => {
+const IconButtonLink = ({ icon, to }: IconButtonLinkProps) => {
   const { classes } = useStyles();
 
   return (
