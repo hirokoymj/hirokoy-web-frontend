@@ -35,7 +35,7 @@
 
 1. Firebase console -> Add app -> Web -> Add Firebase to your web app -> Authentication -> Add new provider -> Google -> `npm install firebase` -> Copy Firebase config code in your app.
 2. GCP console -> Identity Platform -> Providers -> Edit Google -> Add domain (www.hirokoymj.com)
-3. [contexts/authContext.jsx](./src/contexts/authContext.jsx)
+3. [contexts/authContext.tsx](./src/contexts/authContext.tsx)
 
 ![](./src/assets/gcp-IdentityPlatform.png)
 
