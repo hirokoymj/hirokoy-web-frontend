@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -13,7 +13,7 @@ interface CategoryEditFormProps {
   loading: boolean;
 }
 
-export const CategoryEditForm: React.FC<CategoryEditFormProps> = ({ onSubmit, initialValues, loading }) => {
+export const CategoryEditForm = ({ onSubmit, initialValues, loading }: CategoryEditFormProps) => {
   const methods = useForm<CategoryFormValues>({
     resolver: yupResolver(categoryFormSchema),
     defaultValues: initialValues,

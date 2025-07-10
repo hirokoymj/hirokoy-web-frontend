@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import map from 'lodash/map';
 import get from 'lodash/get';
@@ -15,7 +14,7 @@ interface CategoryTableProps {
   openDialog: (id: string) => void;
 }
 
-export const CategoryTable: React.FC<CategoryTableProps> = ({ openDialog }) => {
+export const CategoryTable = ({ openDialog }: CategoryTableProps) => {
   const { data, loading, error } = useQuery(CATEGORY_ALL);
   console.log(data);
 

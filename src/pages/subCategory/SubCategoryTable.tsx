@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import get from 'lodash/get';
 import map from 'lodash/map';
@@ -15,7 +14,7 @@ interface SubCategoryTableProps {
   openDialog: (id: string) => void;
 }
 
-export const SubCategoryTable: React.FC<SubCategoryTableProps> = ({ openDialog }) => {
+export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
   const { data, loading, error } = useQuery(SUB_CATEGORY_ALL);
 
   if (error) return <p>Error : {error.message}</p>;

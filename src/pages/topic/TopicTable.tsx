@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import get from 'lodash/get';
 import map from 'lodash/map';
@@ -16,7 +15,7 @@ interface TopicTableProps {
   openDialog: (id: string) => void;
 }
 
-export const TopicTable: React.FC<TopicTableProps> = ({ openDialog }) => {
+export const TopicTable = ({ openDialog }: TopicTableProps) => {
   const { data, loading, error } = useQuery(TOPIC_ALL);
 
   if (error) return <p>Error : {error.message}</p>;

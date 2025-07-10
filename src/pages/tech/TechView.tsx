@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import groupBy from 'lodash/groupBy';
@@ -25,7 +24,7 @@ interface TechCardProps {
   };
 }
 
-const TechCard: React.FC<TechCardProps> = ({ mappedData }) => {
+const TechCard = ({ mappedData }: TechCardProps) => {
   return (
     <div>
       {Object.entries(mappedData).map(([key, arrayValues]) => (

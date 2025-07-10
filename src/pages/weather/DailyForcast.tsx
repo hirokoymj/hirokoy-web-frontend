@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import { format } from 'date-fns';
 import List from '@mui/material/List';
@@ -75,7 +74,7 @@ interface DailyForcastResponse {
   };
 }
 
-export const DailyForecast: React.FC<DailyForecastProps> = ({ city, unit }) => {
+export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
   const { classes } = useStyles();
   const { data, loading } = useQuery<DailyForcastResponse>(DAILY_FORECAST, {
     variables: {

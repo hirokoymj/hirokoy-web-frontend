@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -68,7 +67,7 @@ interface CurrentWeatherInfoProps {
   unit: 'metric' | 'imperial';
 }
 
-export const CurrentWeatherInfo: React.FC<CurrentWeatherInfoProps> = ({ city, unit }) => {
+export const CurrentWeatherInfo = ({ city, unit }: CurrentWeatherInfoProps) => {
   const { classes } = useStyles();
   const { data, loading } = useQuery<CurrentWeatherByCityDataResponse>(CURRENT_WEATHER_BY_CITY, {
     variables: {

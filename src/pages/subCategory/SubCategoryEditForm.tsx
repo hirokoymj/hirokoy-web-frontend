@@ -1,4 +1,3 @@
-import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -15,12 +14,12 @@ interface SubCategoryEditFormProps {
   loading: boolean;
 }
 
-export const SubCategoryEditForm: React.FC<SubCategoryEditFormProps> = ({
+export const SubCategoryEditForm = ({
   onSubmit,
   category_options,
   initialValues,
   loading,
-}) => {
+}: SubCategoryEditFormProps) => {
   const methods = useForm<SubCategoryFormValues>({
     resolver: yupResolver(subCategoryFormSchema),
     defaultValues: initialValues,

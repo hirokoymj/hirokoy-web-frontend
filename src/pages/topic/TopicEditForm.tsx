@@ -1,4 +1,3 @@
-import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Grid, Button } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -16,13 +15,13 @@ interface TopicEditFormProps {
   loading: boolean;
 }
 
-export const TopicEditForm: React.FC<TopicEditFormProps> = ({
+export const TopicEditForm = ({
   onSubmit,
   category_options,
   subCategory_options,
   defaultValues,
   loading,
-}) => {
+}: TopicEditFormProps) => {
   const methods = useForm({
     resolver: yupResolver(topicFormSchema),
     defaultValues: defaultValues,
