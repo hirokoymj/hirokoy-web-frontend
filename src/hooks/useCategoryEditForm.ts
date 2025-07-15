@@ -7,7 +7,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { UPDATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_BY_ID } from 'queries/Category';
 import { CATEGORY_ALL } from 'queries/Category';
-import { CategoryByIdData, CategoryFormValues } from 'pages/type/types';
+import { CategoryFormValues } from 'pages/type/types';
 
 export const useCategoryEditForm = (categoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();
@@ -19,7 +19,7 @@ export const useCategoryEditForm = (categoryId = '') => {
     data,
     loading,
     error: error_category_by_id,
-  } = useQuery<CategoryByIdData>(CATEGORY_BY_ID, {
+  } = useQuery(CATEGORY_BY_ID, {
     variables: {
       id: categoryId,
     },

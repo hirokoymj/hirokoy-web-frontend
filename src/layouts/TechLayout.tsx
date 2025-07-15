@@ -4,9 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Paper from '@mui/material/Paper';
 import { makeStyles } from 'tss-react/mui';
-//import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-//import { setActiveTab } from 'redux/techTab/techTabSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks'; //Absolute path did not work in redux, so it is used a relative path.
 import { setActiveTab } from '../redux/techTab/techTabSlice';
 
 enum TabNames {

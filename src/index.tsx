@@ -13,11 +13,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// const user: User = {
-//   isSubscribed: true,
-//   name: 'You',
-// };
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>

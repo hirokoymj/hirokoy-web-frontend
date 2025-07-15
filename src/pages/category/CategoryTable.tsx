@@ -18,6 +18,7 @@ export const CategoryTable = ({ openDialog }: CategoryTableProps) => {
   const { data, loading, error } = useQuery(CATEGORY_ALL);
   console.log(data);
 
+  if (loading) return 'Loading...';
   if (error) return <p>Error : {error.message}</p>;
 
   const category_data = !loading && get(data, 'categoryAll', []);

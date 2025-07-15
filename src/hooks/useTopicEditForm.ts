@@ -9,23 +9,20 @@ import { CATEGORY_ALL } from 'queries/Category';
 import { TOPIC_BY_ID } from 'queries/Topic';
 import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { SubCategoryByCategoryData, TopicFormValues, TopicByIdData, CategoryAllData } from 'pages/type/types';
+import { TopicFormValues } from 'pages/type/types';
 
 export const useTopicEditForm = (topicId = '', categoryId = '') => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [updateTopic] = useMutation(UPDATE_TOPIC);
-  const { data, loading } = useQuery<CategoryAllData>(CATEGORY_ALL);
-  const { data: subCategoryData, loading: subCategoryLoading } = useQuery<SubCategoryByCategoryData>(
-    SUB_CATEGORY_BY_CATEGORY,
-    {
-      variables: {
-        categoryId,
-      },
+  const { data, loading } = useQuery(CATEGORY_ALL);
+  const { data: subCategoryData, loading: subCategoryLoading } = useQuery(SUB_CATEGORY_BY_CATEGORY, {
+    variables: {
+      categoryId,
     },
-  );
+  });
 
-  const { data: topicData, loading: topicLoading } = useQuery<TopicByIdData>(TOPIC_BY_ID, {
+  const { data: topicData, loading: topicLoading } = useQuery(TOPIC_BY_ID, {
     variables: {
       id: topicId,
     },

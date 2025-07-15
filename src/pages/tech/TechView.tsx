@@ -7,7 +7,7 @@ import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import { TOPIC_BY_CATEGORY_ABBR } from 'queries/Topic';
 import { TechCardSkeleton } from 'components/Skeleton/LoadingSkeleton';
-import { TopicByIdCategoryAbbrData, Category, SubCategory, AbbrParams } from 'pages/type/types';
+import { Category, SubCategory } from 'pages/type/types';
 
 interface TechCardProps {
   mappedData: {
@@ -54,12 +54,15 @@ const TechCard = ({ mappedData }: TechCardProps) => {
 };
 
 export const TechView = () => {
-  const { abbr } = useParams<AbbrParams>();
-  const { data, loading } = useQuery<TopicByIdCategoryAbbrData>(TOPIC_BY_CATEGORY_ABBR, {
+  const { abbr = 'js' } = useParams();
+  const { data, loading, error } = useQuery(TOPIC_BY_CATEGORY_ABBR, {
     variables: {
       abbr,
     },
   });
+
+  if (loading) return 'Loading...';
+  if (error) return <p>Error : {error.message}</p>;
 
   const mappedData: TechCardProps | {} = !loading ? groupBy(data?.topicByCategoryAbbr, 'subCategory.name') : {};
 

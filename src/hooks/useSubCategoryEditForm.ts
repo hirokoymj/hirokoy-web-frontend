@@ -7,20 +7,14 @@ import { SubmitHandler } from 'react-hook-form';
 import { UPDATE_SUB_CATEGORY } from 'mutations/SubCategory';
 import { SUB_CATEGORY_BY_ID } from 'queries/SubCategory';
 import { CATEGORY_ALL } from 'queries/Category';
-import {
-  CategoryAllData,
-  SubCategoryByIdData,
-  SubCategoryFormValues,
-  Category,
-  DropdownOption,
-} from 'pages/type/types';
+import { SubCategoryFormValues, Category, DropdownOption } from 'pages/type/types';
 
 export const useSubCategoryEditForm = (subCategoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [updateSubCategory] = useMutation(UPDATE_SUB_CATEGORY);
-  const { data, loading } = useQuery<CategoryAllData>(CATEGORY_ALL);
-  const { data: data_sub_category, loading: loading_sub_category } = useQuery<SubCategoryByIdData>(SUB_CATEGORY_BY_ID, {
+  const { data, loading } = useQuery(CATEGORY_ALL);
+  const { data: data_sub_category, loading: loading_sub_category } = useQuery(SUB_CATEGORY_BY_ID, {
     variables: {
       id: subCategoryId,
     },

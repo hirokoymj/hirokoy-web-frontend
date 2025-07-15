@@ -1,66 +1,84 @@
-import { gql } from '@apollo/client';
+import { gql } from '../__generated__';
 
-import { CategoryFragments } from './CategoryFragments';
-import { SubCategoryFragments } from './SubCategoryFragments';
-
-export const TOPIC_BY_ID = gql`
+export const TOPIC_BY_ID = gql(`
   query TopicById($id: ID!) {
     topicById(id: $id) {
       id
       title
       url
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt		
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);
 
-export const TOPIC_BY_CATEGORY = gql`
+export const TOPIC_BY_CATEGORY = gql(`
   query TopicByCategory($id: ID!) {
     topicByCategory(categoryId: $id) {
       id
       title
       url
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);
 
-export const TOPIC_BY_CATEGORY_ABBR = gql`
+export const TOPIC_BY_CATEGORY_ABBR = gql(`
   query TopicByCategoryAbbr($abbr: String!) {
     topicByCategoryAbbr(abbr: $abbr) {
       id
       title
       url
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);
 
-export const TOPIC_ALL = gql`
+export const TOPIC_ALL = gql(`
   query TopicAll {
     topicAll {
       id
@@ -69,14 +87,21 @@ export const TOPIC_ALL = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);

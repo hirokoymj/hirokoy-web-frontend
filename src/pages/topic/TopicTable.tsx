@@ -18,9 +18,11 @@ interface TopicTableProps {
 export const TopicTable = ({ openDialog }: TopicTableProps) => {
   const { data, loading, error } = useQuery(TOPIC_ALL);
 
+  if (loading) return 'Loading...';
   if (error) return <p>Error : {error.message}</p>;
 
-  const topic_data = !loading && get(data, 'topicAll', []);
+  //const topic_data = !loading && get(data, 'topicAll', []);
+  const topic_data = data && get(data, 'topicAll', []);
   const mappedData = map(topic_data, ({ id, title, url, category, subCategory, order, createdAt, updatedAt }) => {
     const categoryName = get(category, 'name', '');
     const subCategoryName = get(subCategory, 'name', '');

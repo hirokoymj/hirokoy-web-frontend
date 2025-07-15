@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '../__generated__';
 
-export const CREATE_CATEGORY = gql`
+export const CREATE_CATEGORY = gql(`
   mutation CreateCategory($input: createCategoryInput!) {
     createCategory(input: $input) {
       id
@@ -10,9 +10,9 @@ export const CREATE_CATEGORY = gql`
       updatedAt
     }
   }
-`;
+`);
 
-export const DELETE_CATEGORY = gql`
+export const DELETE_CATEGORY = gql(`
   mutation DeleteCategory($id: ID!) {
     deleteCategory(id: $id) {
       id
@@ -22,9 +22,9 @@ export const DELETE_CATEGORY = gql`
       updatedAt
     }
   }
-`;
+`);
 
-export const UPDATE_CATEGORY = gql`
+export const UPDATE_CATEGORY = gql(`
   mutation UpdateCategory($id: ID!, $input: updateCategoryInput!) {
     updateCategory(id: $id, input: $input) {
       id
@@ -34,4 +34,4 @@ export const UPDATE_CATEGORY = gql`
       updatedAt
     }
   }
-`;
+`);

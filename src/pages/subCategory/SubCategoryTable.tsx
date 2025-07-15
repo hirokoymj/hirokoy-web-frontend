@@ -17,9 +17,11 @@ interface SubCategoryTableProps {
 export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
   const { data, loading, error } = useQuery(SUB_CATEGORY_ALL);
 
+  if (loading) return 'Loading...';
   if (error) return <p>Error : {error.message}</p>;
 
-  const subCategoryData = !loading && get(data, 'subCategoryAll', []);
+  //  const subCategoryData = !loading && get(data, 'subCategoryAll', []);
+  const subCategoryData = data && get(data, 'subCategoryAll', []);
   const mappedData = map(subCategoryData, ({ id, name, order, category, createdAt, updatedAt }) => {
     const categoryId = get(category, 'id', '');
     const categoryName = get(category, 'name', '');

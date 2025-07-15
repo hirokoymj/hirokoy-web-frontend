@@ -1,7 +1,6 @@
-import { gql } from '@apollo/client';
-import { CategoryFragments } from '../queries/CategoryFragments';
+import { gql } from '../__generated__';
 
-export const CREATE_SUB_CATEGORY = gql`
+export const CREATE_SUB_CATEGORY = gql(`
   mutation CreateSubCategory($input: createSubCategoryInput!) {
     createSubCategory(input: $input) {
       id
@@ -10,14 +9,18 @@ export const CREATE_SUB_CATEGORY = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
     }
   }
-  ${CategoryFragments.categoryInfo}
-`;
+`);
 
-export const DELETE_SUB_CATEGORY = gql`
+export const DELETE_SUB_CATEGORY = gql(`
   mutation DeleteSubCategory($id: ID!) {
     deleteSubCategory(id: $id) {
       id
@@ -27,9 +30,9 @@ export const DELETE_SUB_CATEGORY = gql`
       updatedAt
     }
   }
-`;
+`);
 
-export const UPDATE_SUB_CATEGORY = gql`
+export const UPDATE_SUB_CATEGORY = gql(`
   mutation UpdateSubCategory($id: ID!, $input: updateSubCategoryInput!) {
     updateSubCategory(id: $id, input: $input) {
       id
@@ -38,9 +41,13 @@ export const UPDATE_SUB_CATEGORY = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
     }
   }
-  ${CategoryFragments.categoryInfo}
-`;
+`);

@@ -7,31 +7,28 @@ import { CATEGORY_ALL } from 'queries/Category';
 import { TOPIC_ALL } from 'queries/Topic';
 import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { CreateTopicData, CategoryAllData, SubCategoryByCategoryData, TopicFormValues } from 'pages/type/types';
+import { TopicFormValues } from 'pages/type/types';
 
 export const useTopicForm = (categoryId: string) => {
   const { enqueueSnackbar } = useSnackbar();
 
   // Create Topic
-  const [createTopic] = useMutation<CreateTopicData>(CREATE_TOPIC, {
+  const [createTopic] = useMutation(CREATE_TOPIC, {
     refetchQueries: [TOPIC_ALL],
   });
   //
   // Category Dropdown
   //
-  const { data, loading } = useQuery<CategoryAllData>(CATEGORY_ALL);
+  const { data, loading } = useQuery(CATEGORY_ALL);
   const category_options = makeDropdownOptions(data, 'categoryAll', loading);
   //
   // SubCategory Dropdown
   //
-  const { data: subCategoryData, loading: subCategoryLoading } = useQuery<SubCategoryByCategoryData>(
-    SUB_CATEGORY_BY_CATEGORY,
-    {
-      variables: {
-        categoryId: categoryId,
-      },
+  const { data: subCategoryData, loading: subCategoryLoading } = useQuery(SUB_CATEGORY_BY_CATEGORY, {
+    variables: {
+      categoryId: categoryId,
     },
-  );
+  });
 
   // Make dropdown
   const subCategory_options = makeDropdownOptions(subCategoryData, 'subCategoryByCategory', subCategoryLoading);

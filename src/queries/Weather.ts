@@ -1,13 +1,14 @@
-import { gql } from '@apollo/client';
+import { gql } from '../__generated__';
 
-import { WeatherFragments } from './WeatherFragments';
-
-export const CURRENT_WEATHER_BY_CITY = gql`
+export const CURRENT_WEATHER_BY_CITY = gql(`
   query CurrentWeatherByCity($city: String!, $unit: Units) {
     currentWeatherByCity(city: $city, unit: $unit) {
       id
       cityInfo {
-        ...cityInfo
+		name
+		country
+		lat
+		lon
       }
       weather {
         dt
@@ -16,29 +17,34 @@ export const CURRENT_WEATHER_BY_CITY = gql`
         feelsLike
         icon
         temperature {
-          ...temperature
+			day
+			min
+			max
         }
         humidity
       }
     }
   }
-  ${WeatherFragments.temperature}
-  ${WeatherFragments.cityInfo}
-`;
+`);
 
-export const DAILY_FORECAST = gql`
+export const DAILY_FORECAST = gql(`
   query DailyForecast($city: String!, $unit: Units) {
     dailyForecast(city: $city, unit: $unit) {
       id
       cityInfo {
-        ...cityInfo
+		name
+		country
+		lat
+		lon
       }
       forecastList {
         dt
         condition
         icon
         temperature {
-          ...temperature
+			day
+			min
+			max
         }
         humidity
         wind
@@ -46,6 +52,4 @@ export const DAILY_FORECAST = gql`
       }
     }
   }
-  ${WeatherFragments.temperature}
-  ${WeatherFragments.cityInfo}
-`;
+`);

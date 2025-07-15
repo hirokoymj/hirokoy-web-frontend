@@ -96,7 +96,7 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
           <Grid size={12}>
             <Grid container justifyContent="space-between" alignItems="baseline">
               <Typography component="h2" variant="h5" gutterBottom>
-                7 days forecast{' '}
+                7 Day Weather{' '}
               </Typography>
               <span>
                 <Typography variant="body1" component="span" gutterBottom>

@@ -6,15 +6,15 @@ import { CREATE_SUB_CATEGORY } from 'mutations/SubCategory';
 import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
 import { CATEGORY_ALL } from 'queries/Category';
 import { makeDropdownOptions } from 'components/FormController/common';
-import { CategoryAllData, CreateCategoryData, SubCategoryFormValues } from 'pages/type/types';
+import { SubCategoryFormValues } from 'pages/type/types';
 
 export const useSubCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const [createSubCategory] = useMutation<CreateCategoryData>(CREATE_SUB_CATEGORY, {
+  const [createSubCategory] = useMutation(CREATE_SUB_CATEGORY, {
     refetchQueries: [SUB_CATEGORY_ALL],
   });
 
-  const { data, loading } = useQuery<CategoryAllData>(CATEGORY_ALL);
+  const { data, loading } = useQuery(CATEGORY_ALL);
   const category_options = makeDropdownOptions(data, 'categoryAll', loading);
 
   const onSubmit: SubmitHandler<SubCategoryFormValues> = async (values) => {
@@ -25,7 +25,7 @@ export const useSubCategoryForm = () => {
           input: {
             name,
             category: categoryId,
-            order: order && parseInt(order),
+            order: parseInt(order),
           },
         },
       });

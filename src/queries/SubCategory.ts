@@ -1,8 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '../__generated__';
 
-import { CategoryFragments } from './CategoryFragments';
-
-export const SUB_CATEGORY_BY_ID = gql`
+export const SUB_CATEGORY_BY_ID = gql(`
   query SubCategoryById($id: ID!) {
     subCategoryById(id: $id) {
       id
@@ -11,14 +9,18 @@ export const SUB_CATEGORY_BY_ID = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
     }
   }
-  ${CategoryFragments.categoryInfo}
-`;
+`);
 
-export const SUB_CATEGORY_BY_CATEGORY = gql`
+export const SUB_CATEGORY_BY_CATEGORY = gql(`
   query SubCategoryByCategory($categoryId: ID!) {
     subCategoryByCategory(categoryId: $categoryId) {
       id
@@ -27,14 +29,18 @@ export const SUB_CATEGORY_BY_CATEGORY = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
     }
   }
-  ${CategoryFragments.categoryInfo}
-`;
+`);
 
-export const SUB_CATEGORY_ALL = gql`
+export const SUB_CATEGORY_ALL = gql(`
   query SubCategoryAll {
     subCategoryAll {
       id
@@ -43,9 +49,13 @@ export const SUB_CATEGORY_ALL = gql`
       createdAt
       updatedAt
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
     }
   }
-  ${CategoryFragments.categoryInfo}
-`;
+`);

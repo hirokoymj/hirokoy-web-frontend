@@ -1,16 +1,15 @@
-import { QueryOptions, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useSnackbar } from 'notistack';
 import { SubmitHandler } from 'react-hook-form';
 
 import { CREATE_CATEGORY } from 'mutations/Category';
 import { CATEGORY_ALL } from 'queries/Category';
 import { CategoryFormValues } from 'pages/type/types';
-import { CategoryAllData, CreateCategoryData } from 'pages/type/types';
 
 export const useCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const [createCategory] = useMutation<CreateCategoryData>(CREATE_CATEGORY, {
-    refetchQueries: [{ query: CATEGORY_ALL } as QueryOptions<CategoryAllData>],
+  const [createCategory] = useMutation(CREATE_CATEGORY, {
+    refetchQueries: [{ query: CATEGORY_ALL }],
   });
 
   const onSubmit: SubmitHandler<CategoryFormValues> = async (values) => {

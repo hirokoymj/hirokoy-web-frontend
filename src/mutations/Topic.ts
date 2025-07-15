@@ -1,27 +1,32 @@
-import { gql } from '@apollo/client';
-import { CategoryFragments } from '../queries/CategoryFragments';
-import { SubCategoryFragments } from '../queries/SubCategoryFragments';
+import { gql } from '../__generated__';
 
-export const CREATE_TOPIC = gql`
+export const CREATE_TOPIC = gql(`
   mutation CreateTopic($input: createTopicInput!) {
     createTopic(input: $input) {
       id
       title
       url
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);
 
-export const DELETE_TOPIC = gql`
+export const DELETE_TOPIC = gql(`
   mutation DeleteTopic($id: ID!) {
     deleteTopic(id: $id) {
       id
@@ -29,23 +34,30 @@ export const DELETE_TOPIC = gql`
       url
     }
   }
-`;
+`);
 
-export const UPDATE_TOPIC = gql`
+export const UPDATE_TOPIC = gql(`
   mutation UpdateTopic($id: ID!, $input: updateTopicInput!) {
     updateTopic(id: $id, input: $input) {
       id
       title
       url
       category {
-        ...CategoryInfo
+		id
+		name
+		abbr
+		order
+		createdAt
+		updatedAt
       }
       subCategory {
-        ...SubCategoryInfo
+		id
+		name
+		order
+		createdAt
+		updatedAt
       }
       order
     }
   }
-  ${CategoryFragments.categoryInfo}
-  ${SubCategoryFragments.subCategoryInfo}
-`;
+`);
