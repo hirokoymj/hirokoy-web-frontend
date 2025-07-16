@@ -8,7 +8,7 @@
 
 - TypeScript
 - React.js (version 19)
-- React Hooks, React Context
+- React Hooks, Context
 - React Router v6.3
 - Redux Toolkit v2.8
 - React Hook Form

@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true, //Material UI
     "noImplicitThis": true, //Material UI
-    "strictNullChecks": true //Material UI
+    "strictNullChecks": true //Material UI,
   },
   "include": [
     "src/**/*" // *** The files TypeScript should type check ***
