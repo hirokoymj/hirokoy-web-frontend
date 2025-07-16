@@ -2,9 +2,9 @@ import { useMutation } from '@apollo/client';
 import { useSnackbar } from 'notistack';
 import { SubmitHandler } from 'react-hook-form';
 
-import { CREATE_CATEGORY } from 'mutations/Category';
-import { CATEGORY_ALL } from 'queries/Category';
-import { CategoryFormValues } from 'pages/type/types';
+import { CREATE_CATEGORY } from '../mutations/Category';
+import { CATEGORY_ALL } from '../queries/Category';
+import { CategoryFormValues } from '../pages/type/types';
 
 export const useCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();

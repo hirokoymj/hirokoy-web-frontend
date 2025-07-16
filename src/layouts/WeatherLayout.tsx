@@ -7,9 +7,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Theme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 
-import flagTX from 'assets/flag_TX.png';
-import flagCA from 'assets/flag_CA.png';
-import flagJP from 'assets/flag_JP.png';
+import flagTX from '../assets/flag_TX.png';
+import flagCA from '../assets/flag_CA.png';
+import flagJP from '../assets/flag_JP.png';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   link: {

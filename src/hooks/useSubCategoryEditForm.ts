@@ -4,10 +4,10 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 
-import { UPDATE_SUB_CATEGORY } from 'mutations/SubCategory';
-import { SUB_CATEGORY_BY_ID } from 'queries/SubCategory';
-import { CATEGORY_ALL } from 'queries/Category';
-import { SubCategoryFormValues, Category, DropdownOption } from 'pages/type/types';
+import { UPDATE_SUB_CATEGORY } from '../mutations/SubCategory';
+import { SUB_CATEGORY_BY_ID } from '../queries/SubCategory';
+import { CATEGORY_ALL } from '../queries/Category';
+import { SubCategoryFormValues, Category, DropdownOption } from '../pages/type/types';
 
 export const useSubCategoryEditForm = (subCategoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();

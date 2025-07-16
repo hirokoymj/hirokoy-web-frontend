@@ -9,8 +9,8 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import { makeStyles } from 'tss-react/mui';
 
-import { DAILY_FORECAST } from 'queries/Weather';
-import { DailyForecastSkeleton } from 'components/Skeleton/WeatherSkeleton';
+import { DAILY_FORECAST } from '../../queries/Weather';
+import { DailyForecastSkeleton } from '../../components/Skeleton/WeatherSkeleton';
 
 const useStyles = makeStyles()(() => ({
   forecastDate: {

@@ -10,10 +10,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-import { Logo } from 'components/Logo/Logo';
-import { LeftNaviagtion } from 'components/Navigation/ListItemLink';
-import { ThemeSwitch } from 'components/Switchs/Switch';
-import { LoginButton } from 'pages/auth/LoginButton';
+import { Logo } from '../../components/Logo/Logo';
+import { LeftNaviagtion } from '../../components/Navigation/ListItemLink';
+import { ThemeSwitch } from '../../components/Switchs/Switch';
+import { LoginButton } from '../../pages/auth/LoginButton';
 
 const drawerWidth = 240;
 

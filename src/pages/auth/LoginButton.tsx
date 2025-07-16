@@ -3,9 +3,9 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { makeStyles } from 'tss-react/mui';
 
-import { RouterButton } from 'components/Buttons/RouterButton';
-import { useAuth } from 'contexts/authContext';
-import { doSignOut, CurrentUser } from 'contexts/authContext';
+import { RouterButton } from '../../components/Buttons/RouterButton';
+import { useAuth } from '../../contexts/authContext';
+import { doSignOut, CurrentUser } from '../../contexts/authContext';
 
 const useStyles = makeStyles()((theme) => ({
   button: {

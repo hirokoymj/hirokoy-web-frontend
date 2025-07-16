@@ -3,10 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Grid, Button, Container } from '@mui/material';
 
-import { topicFormSchema } from 'pages/validation/formValidations';
-import { useTopicForm } from 'hooks/useTopicForm';
-import { FormInputText } from 'components/Forms/FormInputText';
-import { FormInputDropdown } from 'components/Forms/FormInputDropdown';
+import { topicFormSchema } from '../../pages/validation/formValidations';
+import { useTopicForm } from '../../hooks/useTopicForm';
+import { FormInputText } from '../../components/Forms/FormInputText';
+import { FormInputDropdown } from '../../components/Forms/FormInputDropdown';
 
 export const TopicForm = () => {
   const methods = useForm({

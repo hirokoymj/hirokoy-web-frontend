@@ -7,12 +7,12 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { CategoryTable } from 'pages/category/CategoryTable';
-import { AlertDialog } from 'components/Dialog/AlertDialog';
-import { Title } from 'components/Titles/Title';
-import { CategoryForm } from 'pages/category/CategoryForm';
-import { DELETE_CATEGORY } from 'mutations/Category';
-import { CATEGORY_ALL } from 'queries/Category';
+import { CategoryTable } from '../pages/category/CategoryTable';
+import { AlertDialog } from '../components/Dialog/AlertDialog';
+import { Title } from '../components/Titles/Title';
+import { CategoryForm } from '../pages/category/CategoryForm';
+import { DELETE_CATEGORY } from '../mutations/Category';
+import { CATEGORY_ALL } from '../queries/Category';
 
 export const CategoryLayout = () => {
   const { enqueueSnackbar } = useSnackbar();

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
-import { CategoryEditForm } from 'pages/category/CategoryEditForm';
-import { useCategoryEditForm } from 'hooks/useCategoryEditForm';
-import { CategoryParams } from 'pages/type/types';
+import { SimpleDrawer } from '../../components/Dialog/SimpleDrawer';
+import { CategoryEditForm } from '../category/CategoryEditForm';
+import { useCategoryEditForm } from '../../hooks/useCategoryEditForm';
+import { CategoryParams } from '../type/types';
 
 export const CategoryEditView = () => {
   const { categoryId } = useParams<CategoryParams>();

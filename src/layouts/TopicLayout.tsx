@@ -7,12 +7,12 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { TopicTable } from 'pages/topic/TopicTable';
-import { AlertDialog } from 'components/Dialog/AlertDialog';
-import { Title } from 'components/Titles/Title';
-import { DELETE_TOPIC } from 'mutations/Topic';
-import { TOPIC_ALL } from 'queries/Topic';
-import { TopicForm } from 'pages/topic/TopicForm';
+import { TopicTable } from '../pages/topic/TopicTable';
+import { AlertDialog } from '../components/Dialog/AlertDialog';
+import { Title } from '../components/Titles/Title';
+import { DELETE_TOPIC } from '../mutations/Topic';
+import { TOPIC_ALL } from '../queries/Topic';
+import { TopicForm } from '../pages/topic/TopicForm';
 
 export const TopicLayout = () => {
   const { enqueueSnackbar } = useSnackbar();

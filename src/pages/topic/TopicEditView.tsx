@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { TopicEditForm } from 'pages/topic/TopicEditForm';
-import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
-import { useTopicEditForm } from 'hooks/useTopicEditForm';
-import { TopicAndCategoryParams } from 'pages/type/types';
+import { TopicEditForm } from '../topic/TopicEditForm';
+import { SimpleDrawer } from '../../components/Dialog/SimpleDrawer';
+import { useTopicEditForm } from '../../hooks/useTopicEditForm';
+import { TopicAndCategoryParams } from '../type/types';
 
 export const TopicEditView = () => {
   const { topicId, categoryId } = useParams<TopicAndCategoryParams>();

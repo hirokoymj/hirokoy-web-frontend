@@ -5,8 +5,6 @@ import Grid from '@mui/material/Grid';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-// import { PageHeader } from 'pages/base/PageHeader';
-// import { PageFooter } from 'pages/base/PageFooter';
 import { PageHeader } from '../pages/base/PageHeader';
 import { PageFooter } from '../pages/base/PageFooter';
 

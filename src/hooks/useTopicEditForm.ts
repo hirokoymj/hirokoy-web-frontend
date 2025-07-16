@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { SubmitHandler } from 'react-hook-form';
 
-import { UPDATE_TOPIC } from 'mutations/Topic';
-import { CATEGORY_ALL } from 'queries/Category';
-import { TOPIC_BY_ID } from 'queries/Topic';
-import { SUB_CATEGORY_BY_CATEGORY } from 'queries/SubCategory';
-import { makeDropdownOptions } from 'components/FormController/common';
-import { TopicFormValues } from 'pages/type/types';
+import { UPDATE_TOPIC } from '../mutations/Topic';
+import { CATEGORY_ALL } from '../queries/Category';
+import { TOPIC_BY_ID } from '../queries/Topic';
+import { SUB_CATEGORY_BY_CATEGORY } from '../queries/SubCategory';
+import { makeDropdownOptions } from '../components/FormController/common';
+import { TopicFormValues } from '../pages/type/types';
 
 export const useTopicEditForm = (topicId = '', categoryId = '') => {
   const navigate = useNavigate();

@@ -3,13 +3,13 @@ import get from 'lodash/get';
 import map from 'lodash/map';
 import { format } from 'date-fns';
 import Link from '@mui/material/Link';
-
-import { TOPIC_ALL } from 'queries/Topic';
-import { Table } from 'components/Tables/Table';
-import { ActionRouterButton } from 'components/Buttons/ActionRouterButton';
-import { ActionButton } from 'components/Buttons/ActionButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+import { TOPIC_ALL } from '../../queries/Topic';
+import { Table } from '../../components/Tables/Table';
+import { ActionRouterButton } from '../../components/Buttons/ActionRouterButton';
+import { ActionButton } from '../../components/Buttons/ActionButton';
 
 interface TopicTableProps {
   openDialog: (id: string) => void;

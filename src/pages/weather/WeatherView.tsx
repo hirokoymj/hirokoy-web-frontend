@@ -3,9 +3,9 @@ import Grid from '@mui/material/Grid';
 import { Theme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 
-import { DailyForecast } from 'pages/weather/DailyForcast';
-import { CurrentWeatherInfo } from 'pages/weather/CurrentWeatherInfo';
-import { CityParams } from 'pages/type/types';
+import { DailyForecast } from './DailyForcast';
+import { CurrentWeatherInfo } from './CurrentWeatherInfo';
+import { CityParams } from '../type/types';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {

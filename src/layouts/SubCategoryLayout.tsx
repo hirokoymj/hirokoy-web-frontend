@@ -7,12 +7,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useSnackbar } from 'notistack';
 
-import { SubCategoryTable } from 'pages/subCategory/SubCategoryTable';
-import { AlertDialog } from 'components/Dialog/AlertDialog';
-import { DELETE_SUB_CATEGORY } from 'mutations/SubCategory';
-import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
-import { SubCategoryForm } from 'pages/subCategory/SubCategoryForm';
-import { Title } from 'components/Titles/Title';
+import { SubCategoryTable } from '../pages/subCategory/SubCategoryTable';
+import { AlertDialog } from '../components/Dialog/AlertDialog';
+import { DELETE_SUB_CATEGORY } from '../mutations/SubCategory';
+import { SUB_CATEGORY_ALL } from '../queries/SubCategory';
+import { SubCategoryForm } from '../pages/subCategory/SubCategoryForm';
+import { Title } from '../components/Titles/Title';
 
 export const SubCategoryLayout = () => {
   const { enqueueSnackbar } = useSnackbar();

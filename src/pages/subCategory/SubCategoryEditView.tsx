@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { SimpleDrawer } from 'components/Dialog/SimpleDrawer';
+import { SimpleDrawer } from '../../components/Dialog/SimpleDrawer';
 import { SubCategoryEditForm } from './SubCategoryEditForm';
-import { useSubCategoryEditForm } from 'hooks/useSubCategoryEditForm';
-import { SubCategoryParams } from 'pages/type/types';
+import { useSubCategoryEditForm } from '../../hooks/useSubCategoryEditForm';
+import { SubCategoryParams } from '../type/types';
 
 export const SubCategoryEditView = () => {
   const { subCategoryId } = useParams<SubCategoryParams>();

@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
-import { TOPIC_BY_CATEGORY_ABBR } from 'queries/Topic';
-import { TechCardSkeleton } from 'components/Skeleton/LoadingSkeleton';
-import { Category, SubCategory } from 'pages/type/types';
+import { TOPIC_BY_CATEGORY_ABBR } from '../../queries/Topic';
+import { TechCardSkeleton } from '../../components/Skeleton/LoadingSkeleton';
+import { Category, SubCategory } from '../type/types';
 
 interface TechCardProps {
   mappedData: {

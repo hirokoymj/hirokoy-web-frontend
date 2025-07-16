@@ -6,9 +6,9 @@ import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 import RoomIcon from '@mui/icons-material/Room';
 
-import { CURRENT_WEATHER_BY_CITY } from 'queries/Weather';
-import { GoogleMap } from 'components/GoogleMap/GoogleMap';
-import { CurrentWeatherSkeleton } from 'components/Skeleton/WeatherSkeleton';
+import { CURRENT_WEATHER_BY_CITY } from '../../queries/Weather';
+import { GoogleMap } from '../../components/GoogleMap/GoogleMap';
+import { CurrentWeatherSkeleton } from '../../components/Skeleton/WeatherSkeleton';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {

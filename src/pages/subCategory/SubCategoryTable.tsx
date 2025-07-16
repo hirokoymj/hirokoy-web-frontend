@@ -3,10 +3,10 @@ import get from 'lodash/get';
 import map from 'lodash/map';
 import { format } from 'date-fns';
 
-import { SUB_CATEGORY_ALL } from 'queries/SubCategory';
-import { Table } from 'components/Tables/Table';
-import { ActionRouterButton } from 'components/Buttons/ActionRouterButton';
-import { ActionButton } from 'components/Buttons/ActionButton';
+import { SUB_CATEGORY_ALL } from '../../queries/SubCategory';
+import { Table } from '../../components/Tables/Table';
+import { ActionRouterButton } from '../../components/Buttons/ActionRouterButton';
+import { ActionButton } from '../../components/Buttons/ActionButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 

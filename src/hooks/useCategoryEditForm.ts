@@ -4,10 +4,10 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 
-import { UPDATE_CATEGORY } from 'mutations/Category';
-import { CATEGORY_BY_ID } from 'queries/Category';
-import { CATEGORY_ALL } from 'queries/Category';
-import { CategoryFormValues } from 'pages/type/types';
+import { UPDATE_CATEGORY } from '../mutations/Category';
+import { CATEGORY_BY_ID } from '../queries/Category';
+import { CATEGORY_ALL } from '../queries/Category';
+import { CategoryFormValues } from '../pages/type/types';
 
 export const useCategoryEditForm = (categoryId = '') => {
   const { enqueueSnackbar } = useSnackbar();

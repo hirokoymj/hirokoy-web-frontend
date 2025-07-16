@@ -11,9 +11,9 @@ import Divider from '@mui/material/Divider';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-import { FormInputText } from 'components/Forms/FormInputText';
-import { doCreateUserWithEmailAndPassword } from 'contexts/authContext';
-import { registerFormSchema } from 'pages/validation/formValidations';
+import { FormInputText } from '../../components/Forms/FormInputText';
+import { doCreateUserWithEmailAndPassword } from '../../contexts/authContext';
+import { registerFormSchema } from '../validation/formValidations';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   paper: {

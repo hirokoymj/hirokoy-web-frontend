@@ -11,10 +11,10 @@ import Box from '@mui/material/Box';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-import { FormInputText } from 'components/Forms/FormInputText';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from 'contexts/authContext';
-import { loginFormSchema } from 'pages/validation/formValidations';
-import { GoogleSignInBtn } from 'pages/auth/GoogleSignInBtn';
+import { FormInputText } from '../../components/Forms/FormInputText';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../contexts/authContext';
+import { loginFormSchema } from '../validation/formValidations';
+import { GoogleSignInBtn } from '../auth/GoogleSignInBtn';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   paper: {
