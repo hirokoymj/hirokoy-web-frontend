@@ -30,6 +30,7 @@ export const CategoryLayout = () => {
   };
 
   const handleDeleteCategory = async () => {
+    console.log('handleDeleteCategory: ' + categoryId);
     try {
       await deleteCategory({
         variables: {

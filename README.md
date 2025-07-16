@@ -108,3 +108,19 @@ git remote -v
 **Material UI**
 
 - [Material UI v7](https://mui.com/material-ui/getting-started/)
+
+```ts
+const { data, loading, error } = useQuery(CATEGORY_ALL);
+
+const { data, loading, error } = useQuery(CATEGORY_BY_ID, {
+  variables: {
+    id: categoryId,
+  },
+});
+const [updateCategory, { error }] = useMutation(UPDATE_CATEGORY, {
+  refetchQueries: [CATEGORY_ALL],
+});
+const [deleteCategory] = useMutation(DELETE_CATEGORY, {
+  refetchQueries: [CATEGORY_ALL],
+});
+```

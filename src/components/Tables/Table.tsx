@@ -1,11 +1,9 @@
-//import React from 'react';
 import { default as MuiTable } from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-//import { TableSkeleton } from 'components/Skeleton/LoadingSkeleton';
 import { TableSkeleton } from '../Skeleton/LoadingSkeleton';
 
 interface TableProps<T extends Record<string, any>> {
