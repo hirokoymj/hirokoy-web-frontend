@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
     "rootDir": "src",
     "outDir": "dist/src",
     "target": "es2020",
