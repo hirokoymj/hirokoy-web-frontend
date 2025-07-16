@@ -29,6 +29,29 @@
 
 - MongoDB Atlas
 
+## GraphQL + Codegen + TypeScript
+
+1. Installing necessary packages.
+
+```js
+npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
+```
+
+2. Add a generate command in package.json
+
+```js
+"scripts": {
+  "generate": "graphql-codegen"
+},
+```
+
+3. Created [codegen.ts](./codegen.ts).
+4. Runs `npm run generate` and the queries and mutations are typed.
+
+   ![](./src/assets/graphql+codegen.png)
+
+<hr />
+
 ## Google Cloud Platform(GCP)
 
 **Implementing Google Account Authentication**
