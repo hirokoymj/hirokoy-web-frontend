@@ -43,32 +43,3 @@ export const router = createBrowserRouter(
     </Route>,
   ),
 );
-
-// export const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path="/" element={<RootLayout />}>
-//       <Route index element={<Navigate to="/weather/dallas" />} />
-//       <Route path="weather" element={<WeatherLayout />}>
-//         <Route path=":city" element={<WeatherView />} />
-//       </Route>
-//       <Route path="category" element={<CategoryLayout />}>
-//         <Route path=":id" element={<CategoryEditView />} />
-//       </Route>
-//       <Route path="subCategory" element={<SubCategoryLayout />}>
-//         <Route path=":id" element={<SubCategoryEditView />} />
-//       </Route>
-//       <Route path="topic" element={<TopicLayout />}>
-//         <Route path=":topicId/:categoryId" element={<TopicEditView />} />
-//       </Route>
-//       <Route path="tech" element={<TechLayout />}>
-//         <Route path=":abbr" element={<TechView />} />
-//       </Route>
-//       <Route path="login" element={<LoginView />} />
-//       <Route path="signup" element={<SignupView />} />
-//       <Route path="todo" element={<TodoView />} />
-//       <Route path="test" element={<TestLayout />}>
-//         <Route path=":id" element={<Demo />} />
-//       </Route>
-//       <Route path="demo" element={<Demo />} />
-//       <Route path="*" element={<NotFound />} />
-//     </Route>

@@ -5,8 +5,10 @@ import { store } from './redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from './styles/ThemeProvider';
-import { router } from 'routes/router';
-import { AuthProvider } from 'contexts/authContext';
+// import { router } from 'routes/router';
+import { router } from './routes/router';
+//import { AuthProvider } from 'contexts/authContext';
+import { AuthProvider } from './contexts/authContext';
 
 const client = new ApolloClient({
   uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
