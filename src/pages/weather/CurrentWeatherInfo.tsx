@@ -33,43 +33,14 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
 }));
 
-interface CityInfo {
-  name: string;
-  country: string;
-  lat: string;
-  lon: string;
-}
-type Temperature = {
-  day: number;
-  min: number;
-  max: number;
-};
-
-type Weather = {
-  dt: number;
-  condition: string;
-  description: string;
-  feelsLike: string;
-  icon: string;
-  temperature: Temperature;
-  humidity: number;
-};
-interface CurrentWeatherByCityDataResponse {
-  currentWeatherByCity: {
-    id: string;
-    cityInfo: CityInfo;
-    weather: Weather;
-  };
-}
-
 interface CurrentWeatherInfoProps {
   city: string;
-  unit: 'metric' | 'imperial';
+  unit: any;
 }
 
-export const CurrentWeatherInfo = ({ city, unit }: CurrentWeatherInfoProps) => {
+export const CurrentWeatherInfo = ({ city, unit = 'imperial' }: CurrentWeatherInfoProps) => {
   const { classes } = useStyles();
-  const { data, loading } = useQuery<CurrentWeatherByCityDataResponse>(CURRENT_WEATHER_BY_CITY, {
+  const { data, loading, error } = useQuery(CURRENT_WEATHER_BY_CITY, {
     variables: {
       city,
       unit,
