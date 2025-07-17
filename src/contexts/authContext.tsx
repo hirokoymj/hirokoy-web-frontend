@@ -10,12 +10,12 @@ import {
 } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB17nCs1DWch35PfJ0X6FAVwA0iqI79eT0',
-  authDomain: 'hiroko-web.firebaseapp.com',
-  projectId: 'hiroko-web',
-  storageBucket: 'hiroko-web.firebasestorage.app',
-  messagingSenderId: '641186624158',
-  appId: '1:641186624158:web:2ba9eb175d315e199d818f',
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
