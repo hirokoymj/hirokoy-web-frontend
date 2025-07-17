@@ -81,17 +81,18 @@ maps-backend.googleapis.com                  Maps JavaScript API
 2. Changing package.json.
 
    ```js
-   "start": "serve -s build",
-   "dev": "react-scripts start",
-   "build": "react-scripts build"
+   "scripts": {
+    "start": "serve -s build",
+   },
    ```
 
 3. Deploy the app to Heroku
 
 ```js
 git heroku login
+heroku git:remote -a <your-app-name>
 git push heroku main
-// Check remote repo
+// Verify the remote repos.
 git remote -v
 ```
 
@@ -127,6 +128,11 @@ git remote -v
 **GCP Cloud library**
 
 - [GCP Signing in user with Google](https://cloud.google.com/identity-platform/docs/web/google)
+
+**Build tool Vite(Veet)**
+
+- https://vite.dev/guide/
+- [Migrating from Create React App to Vite:](https://adhithiravi.medium.com/migrating-from-create-react-app-to-vite-a-modern-approach-76148adb8983)
 
 **Material UI**
 

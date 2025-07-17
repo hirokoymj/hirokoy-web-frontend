@@ -9,6 +9,7 @@ import RoomIcon from '@mui/icons-material/Room';
 import { CURRENT_WEATHER_BY_CITY } from '../../queries/Weather';
 import { GoogleMap } from '../../components/GoogleMap/GoogleMap';
 import { CurrentWeatherSkeleton } from '../../components/Skeleton/WeatherSkeleton';
+import { Units } from '../../__generated__/graphql';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
@@ -35,10 +36,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 interface CurrentWeatherInfoProps {
   city: string;
-  unit: any;
+  unit: Units;
 }
 
-export const CurrentWeatherInfo = ({ city, unit = 'imperial' }: CurrentWeatherInfoProps) => {
+export const CurrentWeatherInfo = ({ city, unit = Units.Imperial }: CurrentWeatherInfoProps) => {
   const { classes } = useStyles();
   const { data, loading, error } = useQuery(CURRENT_WEATHER_BY_CITY, {
     variables: {
@@ -46,13 +47,15 @@ export const CurrentWeatherInfo = ({ city, unit = 'imperial' }: CurrentWeatherIn
       unit,
     },
   });
+
   !loading && console.log(data);
-  const cityInfo =
-    !loading && data?.currentWeatherByCity?.cityInfo ? data.currentWeatherByCity.cityInfo : ({} as CityInfo);
-  const weather = !loading && data?.currentWeatherByCity?.weather ? data.currentWeatherByCity.weather : ({} as Weather);
-  const { lat, lon, name, country } = cityInfo;
-  const { temperature, description, humidity, icon, feelsLike } = weather;
-  const unit_format = unit === 'metric' ? 'C' : 'F';
+  if (error) return <p>Error</p>;
+
+  const cityInfo = !loading && data?.currentWeatherByCity?.cityInfo ? data.currentWeatherByCity.cityInfo : {};
+  const weather = !loading && data?.currentWeatherByCity?.weather ? data.currentWeatherByCity.weather : {};
+  const { lat, lon, name, country } = cityInfo as any;
+  const { temperature, description, humidity, icon, feelsLike } = weather as any;
+  const unit_format = unit === Units.Imperial ? 'F' : 'C';
   console.log(`${lat}, ${lon}`);
 
   return (
