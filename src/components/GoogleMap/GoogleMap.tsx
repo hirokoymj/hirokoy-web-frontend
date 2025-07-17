@@ -16,23 +16,17 @@ const LOS_ANGELES = {
 
 export const GoogleMap: React.FC<GoogleMapProps> = ({ lat = LOS_ANGELES.lat, lng = LOS_ANGELES.lon, children }) => {
   const googleKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-  console.log(googleKey);
   return (
-    <div>
-      <p>{googleKey}</p>
-      <GoogleMapReact
-        bootstrapURLKeys={{
-          key: googleKey,
-        }}
-        defaultCenter={{ lat, lng }}
-        defaultZoom={10}
-        center={{ lat, lng }}
-        zoom={10}
-      >
-        {children}
-      </GoogleMapReact>
-    </div>
+    <GoogleMapReact
+      bootstrapURLKeys={{
+        key: googleKey,
+      }}
+      defaultCenter={{ lat, lng }}
+      defaultZoom={10}
+      center={{ lat, lng }}
+      zoom={10}
+    >
+      {children}
+    </GoogleMapReact>
   );
 };
-
-//key: 'AIzaSyAPKgh62z98ndo0oHyZF6SqNb-2EsxwmHI',

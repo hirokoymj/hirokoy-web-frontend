@@ -8,9 +8,11 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import { makeStyles } from 'tss-react/mui';
+import get from 'lodash/get';
 
 import { DAILY_FORECAST } from '../../queries/Weather';
 import { DailyForecastSkeleton } from '../../components/Skeleton/WeatherSkeleton';
+import { Units } from '../../__generated__/graphql';
 
 const useStyles = makeStyles()(() => ({
   forecastDate: {
@@ -43,49 +45,24 @@ const useStyles = makeStyles()(() => ({
 
 interface DailyForecastProps {
   city: string;
-  unit: string;
-}
-
-type CityInfo = {
-  name: string;
-  country: string;
-  lat: number;
-  lon: number;
-};
-type Temperature = {
-  day: number;
-  min: number;
-  max: number;
-};
-type Forecast = {
-  dt: number;
-  condition: string;
-  icon: string;
-  temperature: Temperature;
-  humidity: number;
-  wind: number;
-  rain: number;
-};
-interface DailyForcastResponse {
-  dailyForecast: {
-    id: string;
-    cityInfo: CityInfo;
-    forecastList: Forecast[];
-  };
+  unit: Units;
 }
 
 export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
   const { classes } = useStyles();
-  const { data, loading } = useQuery<DailyForcastResponse>(DAILY_FORECAST, {
+  const { data, loading, error } = useQuery(DAILY_FORECAST, {
     variables: {
       city,
       unit,
     },
   });
 
-  //!loading && console.log(data);
-  const { forecastList } = !loading && data?.dailyForecast ? data.dailyForecast : { forecastList: [] };
-  const unit_format = unit === 'imperial' ? 'F' : 'C';
+  if (loading) return 'Loading...';
+  if (error) return <p>Error : {error.message}</p>;
+  console.log(data);
+
+  const forecastList = data && get(data, 'dailyForecast.forecastList', []);
+  const unit_format = unit === Units.Imperial ? 'F' : 'C';
 
   return (
     <>
@@ -96,7 +73,7 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
           <Grid size={12}>
             <Grid container justifyContent="space-between" alignItems="baseline">
               <Typography component="h2" variant="h5" gutterBottom>
-                7 Day Weather{' '}
+                7-Day Forecast{' '}
               </Typography>
               <span>
                 <Typography variant="body1" component="span" gutterBottom>
@@ -119,32 +96,32 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
                   <ListItemText primary="Rain" className={classes.rain} />
                   <ListItemText primary="Humidity" className={classes.humidity} />
                 </ListItem>
-                {forecastList.map(({ dt, condition, icon, temperature: { min, max }, rain, humidity }) => {
+                {forecastList?.map((item: any) => {
                   return (
-                    <ListItem divider dense key={dt}>
+                    <ListItem divider dense key={item.dt}>
                       <ListItemText
-                        primary={format(new Date(dt * 1000), 'iii, MM/dd')}
+                        primary={format(new Date(item.dt * 1000), 'iii, MM/dd')}
                         className={classes.forecastDate}
                       />
                       <ListItemText className={classes.weather}>
-                        {icon && (
+                        {item.icon && (
                           <img
-                            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                            src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
                             width="50"
                             height="50"
-                            alt={condition}
+                            alt={item.condition}
                           />
                         )}
-                        <Typography variant="body1">{condition}</Typography>
+                        <Typography variant="body1">{item.condition}</Typography>
                       </ListItemText>
                       <ListItemText className={classes.tempHigh}>
-                        {Math.round(max)}&deg;{unit_format}
+                        {Math.round(item.temperature.max)}&deg;{unit_format}
                       </ListItemText>
                       <ListItemText className={classes.tempLow}>
-                        {Math.round(min)}&deg;{unit_format}
+                        {Math.round(item.temperaturemin)}&deg;{unit_format}
                       </ListItemText>
-                      <ListItemText className={classes.rain}>{Math.round(rain)}&#37;</ListItemText>
-                      <ListItemText className={classes.humidity}>{humidity} %</ListItemText>
+                      <ListItemText className={classes.rain}>{Math.round(item.rain)}&#37;</ListItemText>
+                      <ListItemText className={classes.humidity}>{item.humidity} %</ListItemText>
                     </ListItem>
                   );
                 })}
@@ -156,3 +133,5 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
     </>
   );
 };
+
+//                {forecastList?.map(({ dt, condition, icon, temperature: { min, max }, rain, humidity }) => {

@@ -48,7 +48,6 @@ export const CurrentWeatherInfo = ({ city, unit = Units.Imperial }: CurrentWeath
     },
   });
 
-  !loading && console.log(data);
   if (error) return <p>Error</p>;
 
   const cityInfo = !loading && data?.currentWeatherByCity?.cityInfo ? data.currentWeatherByCity.cityInfo : {};
@@ -56,7 +55,6 @@ export const CurrentWeatherInfo = ({ city, unit = Units.Imperial }: CurrentWeath
   const { lat, lon, name, country } = cityInfo as any;
   const { temperature, description, humidity, icon, feelsLike } = weather as any;
   const unit_format = unit === Units.Imperial ? 'F' : 'C';
-  console.log(`${lat}, ${lon}`);
 
   return (
     <>

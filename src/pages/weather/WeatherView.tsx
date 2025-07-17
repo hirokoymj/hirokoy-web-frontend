@@ -6,6 +6,7 @@ import { makeStyles } from 'tss-react/mui';
 import { DailyForecast } from './DailyForcast';
 import { CurrentWeatherInfo } from './CurrentWeatherInfo';
 import { CityParams } from '../type/types';
+import { Units } from '../../__generated__/graphql';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
 export const WeatherView = () => {
   const { classes } = useStyles();
   const { city = 'dallas' } = useParams<CityParams>();
-  const unit = 'imperial';
+  const unit = Units.Imperial;
 
   return (
     <>

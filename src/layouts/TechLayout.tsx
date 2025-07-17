@@ -38,11 +38,11 @@ export const TechLayout = () => {
     <Paper className={classes.root}>
       <Tabs value={tab} onChange={handleTabChange} indicatorColor="primary" textColor="primary" variant="fullWidth">
         <Tab label={TabNames.React} component={Link} to="react" value={0} />
-        <Tab label={TabNames.JavaScript} component={Link} to="js" value={1} />
-        <Tab label={TabNames.ts} component={Link} to="ts" value={2} />
-        <Tab label={TabNames.Git} component={Link} to="git" value={3} />
-        <Tab label={TabNames.express} component={Link} to="express" value={4} />
-        <Tab label={TabNames.GraphQL} component={Link} to="graphQL" value={5} />
+        <Tab label={TabNames.GraphQL} component={Link} to="graphQL" value={1} />
+        <Tab label={TabNames.JavaScript} component={Link} to="js" value={2} />
+        <Tab label={TabNames.ts} component={Link} to="ts" value={3} />
+        <Tab label={TabNames.Git} component={Link} to="git" value={4} />
+        {/* <Tab label={TabNames.express} component={Link} to="express" value={5} /> */}
       </Tabs>
       <Outlet />
     </Paper>
