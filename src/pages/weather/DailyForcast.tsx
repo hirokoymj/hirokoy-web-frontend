@@ -118,7 +118,7 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
                         {Math.round(item.temperature.max)}&deg;{unit_format}
                       </ListItemText>
                       <ListItemText className={classes.tempLow}>
-                        {Math.round(item.temperaturemin)}&deg;{unit_format}
+                        {Math.round(item.temperature.min)}&deg;{unit_format}
                       </ListItemText>
                       <ListItemText className={classes.rain}>{Math.round(item.rain)}&#37;</ListItemText>
                       <ListItemText className={classes.humidity}>{item.humidity} %</ListItemText>
