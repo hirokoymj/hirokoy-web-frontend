@@ -82,7 +82,7 @@ maps-backend.googleapis.com                  Maps JavaScript API
 
    ```js
    "scripts": {
-    "start": "serve -s build",
+    "start": "serve -s dist", //A build tool Vite uses dist folder instead of build.
    },
    ```
 
@@ -94,6 +94,10 @@ heroku git:remote -a <your-app-name>
 git push heroku main
 // Verify the remote repos.
 git remote -v
+heroku  https://git.heroku.com/hiroko-web-frontend-ts.git (fetch)
+heroku  https://git.heroku.com/hiroko-web-frontend-ts.git (push)
+origin  https://github.com/hirokoymj/hirokoy-web-frontend-ts.git (fetch)
+origin  https://github.com/hirokoymj/hirokoy-web-frontend-ts.git (push)
 ```
 
 ## References
@@ -133,6 +137,7 @@ git remote -v
 
 - https://vite.dev/guide/
 - [Migrating from Create React App to Vite:](https://adhithiravi.medium.com/migrating-from-create-react-app-to-vite-a-modern-approach-76148adb8983)
+- [How to use process.env in Vite](https://dev.to/whchi/how-to-use-processenv-in-vite-ho9)
 
 **Material UI**
 
