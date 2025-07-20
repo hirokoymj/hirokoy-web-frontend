@@ -7,7 +7,9 @@ import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import { TOPIC_BY_CATEGORY_ABBR } from '../../queries/Topic';
 import { TechCardSkeleton } from '../../components/Skeleton/LoadingSkeleton';
-import { Category, SubCategory } from '../type/types';
+//import { Category, SubCategory } from '../type/types';
+import { Category, SubCategory } from '../../__generated__/graphql';
+import { QueryResult } from '../../components/query-result';
 
 interface TechCardProps {
   mappedData: {
@@ -61,14 +63,18 @@ export const TechView = () => {
     },
   });
 
-  if (loading) return 'Loading...';
-  if (error) return <p>Error : {error.message}</p>;
+  //   if (loading) return 'Loading...';
+  //   if (error) return <p>Error : {error.message}</p>;
 
   const mappedData: TechCardProps | {} = !loading ? groupBy(data?.topicByCategoryAbbr, 'subCategory.name') : {};
 
   return (
     <Grid container spacing={3} justifyContent="center" style={{ margin: '16px 0' }}>
-      <Grid size={{ xs: 12, md: 8 }}>{loading ? <TechCardSkeleton /> : <TechCard mappedData={mappedData} />}</Grid>
+      <QueryResult error={error} loading={loading} data={data}>
+        <Grid size={{ xs: 12, md: 8 }}>
+          <TechCard mappedData={mappedData} />
+        </Grid>
+      </QueryResult>
     </Grid>
   );
 };
