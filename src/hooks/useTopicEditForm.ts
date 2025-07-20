@@ -48,7 +48,6 @@ export const useTopicEditForm = (topicId = '', categoryId = '') => {
           },
         },
         onCompleted: (data) => {
-          console.log(data);
           enqueueSnackbar(`Updated the topic.`, {
             variant: 'success',
           });

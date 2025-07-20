@@ -33,7 +33,7 @@ export const useTopicForm = (categoryId: string) => {
           },
         },
         onCompleted: (data) => {
-          const title = data?.createTopic?.title;
+          const title = data?.createTopic?.title || '';
           enqueueSnackbar(`A new topic - ${title} has been created.`, {
             variant: 'success',
           });

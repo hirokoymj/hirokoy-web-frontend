@@ -1,6 +1,5 @@
 import { useQuery, useMutation } from '@apollo/client';
 import get from 'lodash/get';
-import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from 'notistack';
@@ -38,7 +37,6 @@ export const useCategoryEditForm = (categoryId = '') => {
           },
         },
         onCompleted: (data) => {
-          console.log(data);
           const name = data?.updateCategory?.name || '';
           enqueueSnackbar(`The category "${name}" has been updated.`, {
             variant: 'success',

@@ -44,7 +44,6 @@ export const useSubCategoryEditForm = (subCategoryId = '') => {
           },
         },
         onCompleted: (data) => {
-          console.log(data);
           const name = data?.updateSubCategory?.name || '';
           enqueueSnackbar(`The subcategory "${name}" was updated. `, {
             variant: 'success',
