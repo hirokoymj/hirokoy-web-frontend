@@ -1,24 +1,24 @@
 import { useQuery, useMutation } from '@apollo/client';
 import get from 'lodash/get';
-import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
 
 import { UPDATE_SUB_CATEGORY } from '../mutations/SubCategory';
 import { SUB_CATEGORY_BY_ID } from '../queries/SubCategory';
 import { CATEGORY_ALL } from '../queries/Category';
-import { SubCategoryFormValues, Category, DropdownOption } from '../pages/type/types';
+import { SubCategoryFormValues, DropdownOption } from '../pages/type/types';
+import { Category } from '../__generated__/graphql';
 
 export const useSubCategoryEditForm = (subCategoryId = '') => {
-  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [updateSubCategory] = useMutation(UPDATE_SUB_CATEGORY);
   const { data, loading } = useQuery(CATEGORY_ALL);
   const { data: data_sub_category, loading: loading_sub_category } = useQuery(SUB_CATEGORY_BY_ID, {
     variables: {
       id: subCategoryId,
     },
   });
+  const [updateSubCategory] = useMutation(UPDATE_SUB_CATEGORY);
 
   const initialValues = !loading_sub_category && {
     categoryId: get(data_sub_category, 'subCategoryById.category.id', ''),
@@ -43,16 +43,17 @@ export const useSubCategoryEditForm = (subCategoryId = '') => {
             order: parseInt(order),
           },
         },
+        onCompleted: (data) => {
+          console.log(data);
+          const name = data?.updateSubCategory?.name || '';
+          enqueueSnackbar(`The subcategory "${name}" was updated. `, {
+            variant: 'success',
+          });
+          navigate('/subCategory');
+        },
       });
-      enqueueSnackbar('Sub Category successfully updated!', {
-        variant: 'success',
-      });
-      navigate('/subCategory');
     } catch (e) {
       console.error(e);
-      enqueueSnackbar('Failed to update sub category', {
-        variant: 'error',
-      });
     }
   };
 

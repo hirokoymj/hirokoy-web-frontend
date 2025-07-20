@@ -13,7 +13,6 @@ export const useSubCategoryForm = () => {
   const [createSubCategory] = useMutation(CREATE_SUB_CATEGORY, {
     refetchQueries: [SUB_CATEGORY_ALL],
   });
-
   const { data, loading } = useQuery(CATEGORY_ALL);
   const category_options = makeDropdownOptions(data, 'categoryAll', loading);
 
@@ -28,9 +27,12 @@ export const useSubCategoryForm = () => {
             order: parseInt(order),
           },
         },
-      });
-      enqueueSnackbar('New sub category has been created!', {
-        variant: 'success',
+        onCompleted: (data) => {
+          const name = data?.createSubCategory?.name || '';
+          enqueueSnackbar(`A new subcategory - ${name} has been created.`, {
+            variant: 'success',
+          });
+        },
       });
     } catch (e) {
       console.error(e);

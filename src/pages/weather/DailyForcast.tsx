@@ -58,10 +58,10 @@ export const DailyForecast = ({ city, unit }: DailyForecastProps) => {
   });
 
   if (loading) return 'Loading...';
-  if (error) return <p>Error : {error.message}</p>;
+  //if (error) return <p>Error : {error.message}</p>;
   console.log(data);
 
-  const forecastList = data && get(data, 'dailyForecast.forecastList', []);
+  const forecastList = !loading && get(data, 'dailyForecast.forecastList', []);
   const unit_format = unit === Units.Imperial ? 'F' : 'C';
 
   return (

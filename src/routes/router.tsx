@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 //Layouts
 import { RootLayout } from '../layouts/RootLayout';
 import { CategoryLayout } from '../layouts/CategoryLayout';
@@ -16,28 +16,32 @@ import { LoginView } from '../pages/auth/LoginView';
 import { SignupView } from '../pages/auth/SignupView';
 import { NotFound } from '../pages/base/NotFound';
 
-export const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Navigate to="/weather/dallas" />} />
-      <Route path="weather" element={<WeatherLayout />}>
-        <Route path=":city" element={<WeatherView />} />
-      </Route>
-      <Route path="category" element={<CategoryLayout />}>
-        <Route path=":categoryId" element={<CategoryEditView />} />
-      </Route>
-      <Route path="subCategory" element={<SubCategoryLayout />}>
-        <Route path=":subCategoryId" element={<SubCategoryEditView />} />
-      </Route>
-      <Route path="topic" element={<TopicLayout />}>
-        <Route path=":topicId/:categoryId" element={<TopicEditView />} />
-      </Route>
-      <Route path="tech" element={<TechLayout />}>
-        <Route path=":abbr" element={<TechView />} />
-      </Route>
-      <Route path="login" element={<LoginView />} />
-      <Route path="signup" element={<SignupView />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>,
-  ),
-);
+export default function Pages() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Navigate to="/weather/dallas" />} />
+          <Route path="weather" element={<WeatherLayout />}>
+            <Route path=":city" element={<WeatherView />} />
+          </Route>
+          <Route path="category" element={<CategoryLayout />}>
+            <Route path=":categoryId" element={<CategoryEditView />} />
+          </Route>
+          <Route path="subCategory" element={<SubCategoryLayout />}>
+            <Route path=":subCategoryId" element={<SubCategoryEditView />} />
+          </Route>
+          <Route path="topic" element={<TopicLayout />}>
+            <Route path=":topicId/:categoryId" element={<TopicEditView />} />
+          </Route>
+          <Route path="tech" element={<TechLayout />}>
+            <Route path=":abbr" element={<TechView />} />
+          </Route>
+          <Route path="login" element={<LoginView />} />
+          <Route path="signup" element={<SignupView />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}

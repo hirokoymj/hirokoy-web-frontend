@@ -1,8 +1,8 @@
 import { useQuery, useMutation } from '@apollo/client';
 import get from 'lodash/get';
 import { useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 import { SubmitHandler } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
 
 import { UPDATE_TOPIC } from '../mutations/Topic';
 import { CATEGORY_ALL } from '../queries/Category';
@@ -13,7 +13,6 @@ import { TopicFormValues } from '../pages/type/types';
 
 export const useTopicEditForm = (topicId = '', categoryId = '') => {
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
   const [updateTopic] = useMutation(UPDATE_TOPIC);
   const { data, loading } = useQuery(CATEGORY_ALL);
   const { data: subCategoryData, loading: subCategoryLoading } = useQuery(SUB_CATEGORY_BY_CATEGORY, {
@@ -21,7 +20,6 @@ export const useTopicEditForm = (topicId = '', categoryId = '') => {
       categoryId,
     },
   });
-
   const { data: topicData, loading: topicLoading } = useQuery(TOPIC_BY_ID, {
     variables: {
       id: topicId,
@@ -49,16 +47,16 @@ export const useTopicEditForm = (topicId = '', categoryId = '') => {
             order: values.order ? parseInt(values.order, 10) : 0,
           },
         },
+        onCompleted: (data) => {
+          console.log(data);
+          enqueueSnackbar(`Updated the topic.`, {
+            variant: 'success',
+          });
+          navigate('/topic');
+        },
       });
-      enqueueSnackbar('Topic successfully updated!', {
-        variant: 'success',
-      });
-      navigate('/topic');
     } catch (e) {
       console.error(e);
-      enqueueSnackbar('Faild to update Topic.', {
-        variant: 'error',
-      });
     }
   };
 

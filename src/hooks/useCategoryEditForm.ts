@@ -3,6 +3,7 @@ import get from 'lodash/get';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
 
 import { UPDATE_CATEGORY } from '../mutations/Category';
 import { CATEGORY_BY_ID } from '../queries/Category';
@@ -10,22 +11,16 @@ import { CATEGORY_ALL } from '../queries/Category';
 import { CategoryFormValues } from '../pages/type/types';
 
 export const useCategoryEditForm = (categoryId = '') => {
-  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [updateCategory, { error }] = useMutation(UPDATE_CATEGORY, {
-    refetchQueries: [CATEGORY_ALL],
-  });
-  const {
-    data,
-    loading,
-    error: error_category_by_id,
-  } = useQuery(CATEGORY_BY_ID, {
+  const { data, loading, error } = useQuery(CATEGORY_BY_ID, {
     variables: {
       id: categoryId,
     },
   });
+  const [updateCategory, { error: update_category_error }] = useMutation(UPDATE_CATEGORY, {
+    refetchQueries: [CATEGORY_ALL],
+  });
 
-  if (!loading) console.log(data);
   const initialValues = !loading && {
     name: get(data, 'categoryById.name', ''),
     abbr: get(data, 'categoryById.abbr', ''),
@@ -42,16 +37,17 @@ export const useCategoryEditForm = (categoryId = '') => {
             abbr,
           },
         },
+        onCompleted: (data) => {
+          console.log(data);
+          const name = data?.updateCategory?.name || '';
+          enqueueSnackbar(`The category "${name}" has been updated.`, {
+            variant: 'success',
+          });
+          navigate('/category');
+        },
       });
-      enqueueSnackbar('Category successfully updated!', {
-        variant: 'success',
-      });
-      navigate('/category');
     } catch (e) {
       console.error(e);
-      enqueueSnackbar('Failed to update category', {
-        variant: 'error',
-      });
     }
   };
 
@@ -59,6 +55,6 @@ export const useCategoryEditForm = (categoryId = '') => {
     onSubmit,
     initialValues,
     loading,
-    error: error || error_category_by_id,
+    error: error || update_category_error,
   };
 };
