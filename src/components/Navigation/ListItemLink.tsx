@@ -53,7 +53,7 @@ export const LeftNaviagtion = () => {
   return (
     <>
       <List>
-        <ListItemLink to="/" text="Weather" icon={<CloudOutlinedIcon />} />
+        {/* <ListItemLink to="/" text="Weather" icon={<CloudOutlinedIcon />} /> */}
         <ListItemLink to="/tech/react" text="Tech Links" icon={<InboxIcon />} onClick={handleClick} />
       </List>
       <Divider />

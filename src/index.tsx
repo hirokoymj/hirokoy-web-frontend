@@ -4,7 +4,7 @@ import { store } from './redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from './styles/ThemeProvider';
-import Pages from './routes/router';
+import App from './App';
 import { AuthProvider } from './contexts/authContext';
 import { SnackbarProvider } from 'notistack';
 
@@ -21,7 +21,7 @@ root.render(
         <AuthProvider>
           <ThemeProvider>
             <SnackbarProvider>
-              <Pages />
+              <App />
             </SnackbarProvider>
           </ThemeProvider>
         </AuthProvider>
