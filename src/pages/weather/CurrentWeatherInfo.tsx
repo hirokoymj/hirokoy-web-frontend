@@ -48,7 +48,7 @@ export const CurrentWeatherInfo = ({ city, unit = Units.Imperial }: CurrentWeath
     },
   });
 
-  if (error) return <p>Error</p>;
+  //if (error) return <p>Error</p>;
 
   const cityInfo = !loading && data?.currentWeatherByCity?.cityInfo ? data.currentWeatherByCity.cityInfo : {};
   const weather = !loading && data?.currentWeatherByCity?.weather ? data.currentWeatherByCity.weather : {};
