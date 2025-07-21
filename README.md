@@ -2,32 +2,25 @@
 
 - Live URL : https://www.hirokoymj.com
 
-## Technologies
+## Frontend
 
-**Frontend**
+- React.js (v19), TypeScript, React Hooks/Context, React Router v6, Redux Toolkit, React Hook Form, Apollo Client(GraphQL), Google Account Authentication, Material UI(v7)
 
-- TypeScript
-- React.js (version 19)
-- React Hooks, Context
-- React Router v6.3
-- Redux Toolkit v2.8
-- React Hook Form
-- Apollo Client v3 (GraphQL)
-- Material UI (version 7)
-- Google Map API
-- Google Account authentication with Firebase
+## Backend
 
-**Backend** - https://github.com/hirokoymj/hiroko-web-backend-new
+- Node.js, TypeScript, MongoDB Atlas/Mongoose, Apollo Server v3 (GraphQL)
+- [Backend repository](https://github.com/hirokoymj/hiroko-web-backend-new)
+- [Backend API](https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/)
 
-- Typescript
-- Node.js
-- Apollo Server v3
-- Mongoose
-- Weather API
+## Deployment
 
-**Database**
+- Heroku
 
-- MongoDB Atlas
+```js
+git heroku login
+heroku git:remote -a <app-name>
+git push heroku main
+```
 
 ## GraphQL + Codegen + TypeScript
 
@@ -74,31 +67,6 @@ maps-backend.googleapis.com                  Maps JavaScript API
 ```
 
 ![](./src/assets/gcp-google-map-api.png)
-
-## Deploy to Heroku
-
-1. Installing the serve package. `npm install serve`.
-2. Changing package.json.
-
-   ```js
-   "scripts": {
-    "start": "serve -s dist", //A build tool Vite uses dist folder instead of build.
-   },
-   ```
-
-3. Deploy the app to Heroku
-
-```js
-git heroku login
-heroku git:remote -a <your-app-name>
-git push heroku main
-// Verify the remote repos.
-git remote -v
-heroku  https://git.heroku.com/hiroko-web-frontend-ts.git (fetch)
-heroku  https://git.heroku.com/hiroko-web-frontend-ts.git (push)
-origin  https://github.com/hirokoymj/hirokoy-web-frontend-ts.git (fetch)
-origin  https://github.com/hirokoymj/hirokoy-web-frontend-ts.git (push)
-```
 
 ## References
 
