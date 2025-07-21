@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 
 import { SubCategoryTable } from '../pages/subCategory/SubCategoryTable';
 import { AlertDialog } from '../components/Dialog/AlertDialog';
@@ -15,7 +15,6 @@ import { SubCategoryForm } from '../pages/subCategory/SubCategoryForm';
 import { Title } from '../components/Titles/Title';
 
 export const SubCategoryLayout = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState<boolean>(false);
   const [subCategoryId, setSubCategoryId] = useState<string>('');
   const [deleteSubCategory] = useMutation(DELETE_SUB_CATEGORY, {
@@ -37,11 +36,14 @@ export const SubCategoryLayout = () => {
         variables: {
           id: subCategoryId,
         },
+        onCompleted: (data) => {
+          const name = data?.deleteSubCategory?.name || '';
+          enqueueSnackbar(`Deleted the sub category - ${name}.`, {
+            variant: 'success',
+          });
+          handleClose();
+        },
       });
-      enqueueSnackbar('Sub Category successfully deleted!', {
-        variant: 'success',
-      });
-      handleClose();
     } catch (e) {
       console.error(e);
     }

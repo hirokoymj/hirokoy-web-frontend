@@ -9,10 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import { TableSkeleton } from '../Skeleton/LoadingSkeleton';
 
 interface TableProps<T extends Record<string, any>> {
-  data: T[]; // Array of data objects
-  columns: Column[]; // Array of column definitions
+  data: any;
+  columns: Column[];
   loading: boolean;
-  hover?: boolean; // Optional prop
+  hover?: boolean;
 }
 type Column = {
   label: string;
@@ -40,7 +40,7 @@ export const Table = <T extends Record<string, any>>({ data, columns, loading, h
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((d, index) => {
+              {data.map((d: any, index: any) => {
                 return (
                   <TableRow key={index} hover={hover}>
                     {columns.map((col, key) => {

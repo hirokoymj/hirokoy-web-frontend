@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import { TOPIC_BY_CATEGORY_ABBR } from '../../queries/Topic';
-import { TechCardSkeleton } from '../../components/Skeleton/LoadingSkeleton';
-//import { Category, SubCategory } from '../type/types';
 import { Category, SubCategory } from '../../__generated__/graphql';
 import { QueryResult } from '../../components/query-result';
 

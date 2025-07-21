@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { useSnackbar } from 'notistack';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { enqueueSnackbar } from 'notistack';
 
 import { TopicTable } from '../pages/topic/TopicTable';
 import { AlertDialog } from '../components/Dialog/AlertDialog';
@@ -15,7 +15,6 @@ import { TOPIC_ALL } from '../queries/Topic';
 import { TopicForm } from '../pages/topic/TopicForm';
 
 export const TopicLayout = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState<boolean>(false);
   const [topicId, setTopicId] = useState<string>('');
   const [deleteTopic, { loading }] = useMutation(DELETE_TOPIC, {
@@ -35,11 +34,14 @@ export const TopicLayout = () => {
         variables: {
           id: topicId,
         },
+        onCompleted: (data) => {
+          const title = data?.deleteTopic?.title || '';
+          enqueueSnackbar(`Deleted the topic - ${title}.`, {
+            variant: 'success',
+          });
+          handleClose();
+        },
       });
-      enqueueSnackbar('Topic successfully deleted!', {
-        variant: 'success',
-      });
-      handleClose();
     } catch (e) {
       console.error(e);
     }

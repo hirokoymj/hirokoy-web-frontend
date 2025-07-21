@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { useSnackbar } from 'notistack';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { enqueueSnackbar } from 'notistack';
 
 import { CategoryTable } from '../pages/category/CategoryTable';
 import { AlertDialog } from '../components/Dialog/AlertDialog';
@@ -15,7 +15,6 @@ import { DELETE_CATEGORY } from '../mutations/Category';
 import { CATEGORY_ALL } from '../queries/Category';
 
 export const CategoryLayout = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState<boolean>(false);
   const [categoryId, setCategoryId] = useState<string>('');
   const [deleteCategory] = useMutation(DELETE_CATEGORY, {
@@ -35,11 +34,14 @@ export const CategoryLayout = () => {
         variables: {
           id: categoryId,
         },
+        onCompleted: (data) => {
+          const name = data?.deleteCategory?.name || '';
+          enqueueSnackbar(`The category - ${name} has been deleted!`, {
+            variant: 'success',
+          });
+          handleClose();
+        },
       });
-      enqueueSnackbar('Category successfully deleted!', {
-        variant: 'success',
-      });
-      handleClose();
     } catch (e) {
       console.error(e);
     }

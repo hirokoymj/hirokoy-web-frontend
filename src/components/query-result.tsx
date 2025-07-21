@@ -1,6 +1,4 @@
 import React, { PropsWithChildren } from 'react';
-//import styled from '@emotion/styled';
-//import { LoadingSpinner } from '@apollo/space-kit/Loaders/LoadingSpinner';
 import { ApolloError } from '@apollo/client';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -36,5 +34,3 @@ export const QueryResult: React.FC<PropsWithChildren<QueryResultProps>> = ({
 
   return <p>Nothing to show...</p>;
 };
-
-//export default QueryResult;

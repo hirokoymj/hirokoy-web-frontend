@@ -1,6 +1,4 @@
 import { useQuery } from '@apollo/client';
-import map from 'lodash/map';
-import get from 'lodash/get';
 import { format } from 'date-fns';
 
 import { CATEGORY_ALL } from '../../queries/Category';
@@ -9,6 +7,7 @@ import { ActionRouterButton } from '../../components/Buttons/ActionRouterButton'
 import { ActionButton } from '../../components/Buttons/ActionButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { QueryResult } from '../../components/query-result';
 
 interface CategoryTableProps {
   openDialog: (id: string) => void;
@@ -16,63 +15,62 @@ interface CategoryTableProps {
 
 export const CategoryTable = ({ openDialog }: CategoryTableProps) => {
   const { data, loading, error } = useQuery(CATEGORY_ALL);
-  console.log(data);
 
-  if (loading) return 'Loading...';
-  if (error) return <p>Error : {error.message}</p>;
+  const mappedData =
+    !loading &&
+    data?.categoryAll?.map(({ id, name, abbr, createdAt, updatedAt }) => {
+      const actions = (
+        <>
+          <ActionRouterButton to={`/category/${id}`}>
+            <EditIcon style={{ color: 'white' }} />
+          </ActionRouterButton>
+          <ActionButton onClick={() => openDialog(id)}>
+            <DeleteIcon style={{ color: 'white' }} />
+          </ActionButton>
+        </>
+      );
+      const created = format(new Date(createdAt), 'MM/dd/yyyy');
+      const updated = format(new Date(updatedAt), 'MM/dd/yyyy');
 
-  const category_data = !loading && get(data, 'categoryAll', []);
-  const mappedData = map(category_data, ({ id, name, abbr, createdAt, updatedAt }) => {
-    const actions = (
-      <>
-        <ActionRouterButton to={`/category/${id}`}>
-          <EditIcon style={{ color: 'white' }} />
-        </ActionRouterButton>
-        <ActionButton onClick={() => openDialog(id)}>
-          <DeleteIcon style={{ color: 'white' }} />
-        </ActionButton>
-      </>
-    );
-    const created = format(new Date(createdAt), 'MM/dd/yyyy');
-    const updated = format(new Date(updatedAt), 'MM/dd/yyyy');
-
-    return {
-      id,
-      name,
-      abbr,
-      created,
-      updated,
-      actions,
-    };
-  });
+      return {
+        id,
+        name,
+        abbr,
+        created,
+        updated,
+        actions,
+      };
+    });
 
   return (
-    <Table
-      data={mappedData}
-      loading={loading}
-      columns={[
-        {
-          label: 'Category',
-          field: 'name',
-        },
-        {
-          label: 'Abbreviation',
-          field: 'abbr',
-        },
-        {
-          label: 'Created',
-          field: 'created',
-        },
-        {
-          label: 'Updated',
-          field: 'updated',
-        },
-        {
-          label: 'Actions',
-          field: 'actions',
-          align: 'center',
-        },
-      ]}
-    />
+    <QueryResult error={error} loading={loading} data={data}>
+      <Table
+        data={mappedData}
+        loading={loading}
+        columns={[
+          {
+            label: 'Category',
+            field: 'name',
+          },
+          {
+            label: 'Abbreviation',
+            field: 'abbr',
+          },
+          {
+            label: 'Created',
+            field: 'created',
+          },
+          {
+            label: 'Updated',
+            field: 'updated',
+          },
+          {
+            label: 'Actions',
+            field: 'actions',
+            align: 'center',
+          },
+        ]}
+      />
+    </QueryResult>
   );
 };
