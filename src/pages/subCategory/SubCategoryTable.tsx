@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import get from 'lodash/get';
 import { format } from 'date-fns';
+import Pagination from '@mui/material/Pagination';
+import Box from '@mui/material/Box';
 
 import { SUB_CATEGORY_ALL } from '../../queries/SubCategory';
 import { Table } from '../../components/Tables/Table';
@@ -14,12 +17,21 @@ interface SubCategoryTableProps {
   openDialog: (id: string) => void;
 }
 
+const PAGE_SIZE = 10;
+
 export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
-  const { data, loading, error } = useQuery(SUB_CATEGORY_ALL);
+  const [page, setPage] = useState(1);
+  const { data, loading, error } = useQuery(SUB_CATEGORY_ALL, {
+    variables: { limit: PAGE_SIZE, skip: PAGE_SIZE * (page - 1) },
+    fetchPolicy: 'network-only',
+  });
+
+  const totalCount = (!loading && data?.subCategoryAll?.totalCount) || 0;
+  const totalPage = Math.ceil(totalCount / PAGE_SIZE);
 
   const mappedData =
     !loading &&
-    data?.subCategoryAll?.map(({ id, name, order, category, createdAt, updatedAt }) => {
+    data?.subCategoryAll?.subCategories.map(({ id, name, order, category, createdAt, updatedAt }) => {
       const categoryId = get(category, 'id', '');
       const categoryName = get(category, 'name', '');
       const actions = (
@@ -46,6 +58,9 @@ export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
         updated,
       };
     });
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   return (
     <QueryResult error={error} loading={loading} data={data}>
@@ -62,7 +77,7 @@ export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
             field: 'categoryName',
           },
           {
-            label: 'Order',
+            label: 'Sub Category order',
             field: 'order',
           },
           {
@@ -80,6 +95,23 @@ export const SubCategoryTable = ({ openDialog }: SubCategoryTableProps) => {
           },
         ]}
       />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          py: 2,
+        }}
+      >
+        {' '}
+        {/* <div>PAGE_SIZE: {PAGE_SIZE}</div>
+        <div>TOTAL COUNT: {totalCount}</div>
+        <div>TOTAL PAGE: {totalPage}</div>
+        <div>PAGE: {page}</div>
+        <div>OFFSET: {PAGE_SIZE * (page - 1)}</div> */}
+        <Pagination count={totalPage} page={page} onChange={handleChange} color="primary" />
+      </Box>
     </QueryResult>
   );
 };

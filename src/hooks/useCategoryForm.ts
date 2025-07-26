@@ -8,7 +8,7 @@ import { CategoryFormValues } from '../pages/type/types';
 
 export const useCategoryForm = () => {
   const [createCategory] = useMutation(CREATE_CATEGORY, {
-    refetchQueries: [{ query: CATEGORY_ALL }],
+    refetchQueries: [CATEGORY_ALL],
   });
 
   const onSubmit: SubmitHandler<CategoryFormValues> = async (values) => {

@@ -4,17 +4,18 @@ import { SubmitHandler } from 'react-hook-form';
 
 import { CREATE_SUB_CATEGORY } from '../mutations/SubCategory';
 import { SUB_CATEGORY_ALL } from '../queries/SubCategory';
-import { CATEGORY_ALL } from '../queries/Category';
-import { makeDropdownOptions } from '../components/FormController/common';
-import { SubCategoryFormValues } from '../pages/type/types';
+import { CATEGORIES } from '../queries/Category';
+import { SubCategoryFormValues, DropdownOption } from '../pages/type/types';
 
 export const useSubCategoryForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [createSubCategory] = useMutation(CREATE_SUB_CATEGORY, {
     refetchQueries: [SUB_CATEGORY_ALL],
   });
-  const { data, loading } = useQuery(CATEGORY_ALL);
-  const category_options = makeDropdownOptions(data, 'categoryAll', loading);
+  const { data, loading } = useQuery(CATEGORIES);
+
+  const category_options: DropdownOption[] =
+    (!loading && data?.categories?.map((d) => ({ label: d.name, value: d.id }))) || [];
 
   const onSubmit: SubmitHandler<SubCategoryFormValues> = async (values) => {
     try {

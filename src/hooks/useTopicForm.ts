@@ -3,25 +3,27 @@ import { SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from 'notistack';
 
 import { CREATE_TOPIC } from '../mutations/Topic';
-import { CATEGORY_ALL } from '../queries/Category';
+import { CATEGORIES } from '../queries/Category';
 import { TOPIC_ALL } from '../queries/Topic';
 import { SUB_CATEGORY_BY_CATEGORY } from '../queries/SubCategory';
-import { makeDropdownOptions } from '../components/FormController/common';
-import { TopicFormValues } from '../pages/type/types';
+import { TopicFormValues, DropdownOption } from '../pages/type/types';
 
 export const useTopicForm = (categoryId: string) => {
   const [createTopic] = useMutation(CREATE_TOPIC, {
     refetchQueries: [TOPIC_ALL],
   });
-  const { data, loading } = useQuery(CATEGORY_ALL);
+  const { data, loading } = useQuery(CATEGORIES);
   const { data: subCategoryData, loading: subCategoryLoading } = useQuery(SUB_CATEGORY_BY_CATEGORY, {
     variables: {
       categoryId,
     },
   });
 
-  const category_options = makeDropdownOptions(data, 'categoryAll', loading);
-  const subCategory_options = makeDropdownOptions(subCategoryData, 'subCategoryByCategory', subCategoryLoading);
+  const category_options: DropdownOption[] =
+    (!loading && data?.categories?.map((d) => ({ label: d.name, value: d.id }))) || [];
+
+  const subCategory_options: DropdownOption[] =
+    (!subCategoryLoading && subCategoryData?.subCategoryByCategory?.map((d) => ({ label: d.name, value: d.id }))) || [];
 
   const onSubmit: SubmitHandler<TopicFormValues> = async (values) => {
     try {
