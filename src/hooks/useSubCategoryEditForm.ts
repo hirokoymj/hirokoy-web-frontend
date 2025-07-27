@@ -6,13 +6,12 @@ import { enqueueSnackbar } from 'notistack';
 
 import { UPDATE_SUB_CATEGORY } from '../mutations/SubCategory';
 import { SUB_CATEGORY_BY_ID } from '../queries/SubCategory';
-import { CATEGORY_ALL } from '../queries/Category';
+import { CATEGORIES } from '../queries/Category';
 import { SubCategoryFormValues, DropdownOption } from '../pages/type/types';
-import { Category } from '../__generated__/graphql';
 
 export const useSubCategoryEditForm = (subCategoryId = '') => {
   const navigate = useNavigate();
-  const { data, loading } = useQuery(CATEGORY_ALL);
+  const { data, loading } = useQuery(CATEGORIES);
   const { data: data_sub_category, loading: loading_sub_category } = useQuery(SUB_CATEGORY_BY_ID, {
     variables: {
       id: subCategoryId,
@@ -26,10 +25,8 @@ export const useSubCategoryEditForm = (subCategoryId = '') => {
     order: get(data_sub_category, 'subCategoryById.order', 1),
   };
 
-  const categories: Category[] = !loading ? (get(data, 'categoryAll', []) as Category[]) : [];
-  const category_options: DropdownOption[] = categories.map(({ id, name }) => {
-    return { value: id, label: name };
-  });
+  const category_options: DropdownOption[] =
+    (!loading && data?.categories?.map((d) => ({ label: d.name, value: d.id }))) || [];
 
   const onSubmit: SubmitHandler<SubCategoryFormValues> = async (values) => {
     try {

@@ -9,7 +9,7 @@ import { AuthProvider } from './contexts/authContext';
 import { SnackbarProvider } from 'notistack';
 
 const client = new ApolloClient({
-  uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+  uri: 'https://hiroko-backend-test-b6f2db3a5c3e.herokuapp.com/',
   cache: new InMemoryCache(),
 });
 const root = createRoot(document.getElementById('root')!);

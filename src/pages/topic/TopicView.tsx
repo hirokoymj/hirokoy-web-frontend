@@ -53,7 +53,7 @@ export const TopicView = () => {
       </Routes>
       <Grid container spacing={3} justifyContent="center">
         <Grid size={12}>
-          <Title text="Create Links" />
+          <Title text="Tech links" />
           <Paper>
             <TopicForm />
           </Paper>

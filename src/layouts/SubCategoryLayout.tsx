@@ -54,7 +54,7 @@ export const SubCategoryLayout = () => {
       <Outlet />
       <Grid container spacing={3} justifyContent="center">
         <Grid size={12}>
-          <Title text="Create Subcategory" />
+          <Title text="Subcategory" />
           <Paper>{<SubCategoryForm />}</Paper>
         </Grid>
         <Grid size={12}>

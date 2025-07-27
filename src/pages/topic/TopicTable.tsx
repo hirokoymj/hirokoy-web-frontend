@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import get from 'lodash/get';
 import { format } from 'date-fns';
 import Link from '@mui/material/Link';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Pagination from '@mui/material/Pagination';
+import Box from '@mui/material/Box';
 
 import { TOPIC_ALL } from '../../queries/Topic';
 import { Table } from '../../components/Tables/Table';
@@ -15,14 +18,23 @@ interface TopicTableProps {
   openDialog: (id: string) => void;
 }
 
-export const TopicTable = ({ openDialog }: TopicTableProps) => {
-  const { data, loading, error } = useQuery(TOPIC_ALL);
+const PAGE_SIZE = 10;
 
+export const TopicTable = ({ openDialog }: TopicTableProps) => {
+  const [page, setPage] = useState(1);
+  const { data, loading, error } = useQuery(TOPIC_ALL, {
+    variables: { limit: PAGE_SIZE, skip: PAGE_SIZE * (page - 1) },
+    fetchPolicy: 'network-only',
+  });
+
+  const totalCount = (!loading && data?.topicAll?.totalCount) || 0;
+  const totalPage = Math.ceil(totalCount / PAGE_SIZE);
   const mappedData =
     !loading &&
-    data?.topicAll?.map(({ id, title, url, category, subCategory, order, createdAt, updatedAt }) => {
+    data?.topicAll?.topics.map(({ id, title, url, order, category, subCategory, createdAt, updatedAt }) => {
       const categoryName = get(category, 'name', '');
       const subCategoryName = get(subCategory, 'name', '');
+      const subCategoryOrder = get(subCategory, 'order', '');
       const categoryId = get(category, 'id', '');
 
       const titleLink = (
@@ -48,14 +60,19 @@ export const TopicTable = ({ openDialog }: TopicTableProps) => {
         id,
         titleLink,
         url,
+        order,
         categoryName,
         subCategoryName,
+        subCategoryOrder,
         actions,
-        order,
         created,
         updated,
       };
     });
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   return (
     <QueryResult error={error} loading={loading} data={data}>
@@ -65,20 +82,20 @@ export const TopicTable = ({ openDialog }: TopicTableProps) => {
         hover={true}
         columns={[
           {
+            label: 'Title',
+            field: 'titleLink',
+          },
+          //   {
+          //     label: 'order',
+          //     field: 'order',
+          //   },
+          {
             label: 'Category',
             field: 'categoryName',
           },
           {
-            label: 'Sub Category',
+            label: 'SubCategory',
             field: 'subCategoryName',
-          },
-          {
-            label: 'Title',
-            field: 'titleLink',
-          },
-          {
-            label: 'Order',
-            field: 'order',
           },
           {
             label: 'Created',
@@ -95,6 +112,22 @@ export const TopicTable = ({ openDialog }: TopicTableProps) => {
           },
         ]}
       />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          py: 2,
+        }}
+      >
+        {/* <div>PAGE_SIZE: {PAGE_SIZE}</div>
+        <div>TOTAL COUNT: {totalCount}</div>
+        <div>TOTAL PAGE: {totalPage}</div>
+        <div>PAGE: {page}</div>
+        <div>OFFSET: {PAGE_SIZE * (page - 1)}</div> */}
+        <Pagination count={totalPage} page={page} onChange={handleChange} color="primary" />
+      </Box>
     </QueryResult>
   );
 };
