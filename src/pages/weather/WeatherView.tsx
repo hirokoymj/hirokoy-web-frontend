@@ -32,9 +32,9 @@ export const WeatherView = () => {
         <Grid size={12}>
           <CurrentWeatherInfo city={city} unit={unit} />
         </Grid>
-        {/* <Grid size={12}>
+        <Grid size={12}>
           <DailyForecast city={city} unit={unit} />
-        </Grid> */}
+        </Grid>
       </Grid>
     </>
   );

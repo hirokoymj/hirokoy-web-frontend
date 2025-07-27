@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
-// import { useAppDispatch } from 'redux/hooks';
-// import { resetActiveTab } from 'redux/techTab/techTabSlice';
+// import { useAppDispatch } from '../../redux/hooks';
+// import { resetActiveTab } from '../../redux/techTab/techTabSlice';
 
 const useStyles = makeStyles()((theme: Theme) => ({
   icon: {
@@ -35,7 +35,7 @@ interface ListItemLinkProps {
 const ListItemLink: React.FC<ListItemLinkProps> = (props) => {
   const { icon, text, to, onClick } = props;
   const { classes } = useStyles();
-  //   const dispatch = useAppDispatch();
+  //const dispatch = useAppDispatch();
 
   return (
     <ListItemButton component={Link} to={to} onClick={onClick} classes={{ root: classes.listButton }}>
@@ -53,14 +53,17 @@ export const LeftNaviagtion = () => {
   return (
     <>
       <List>
-        {/* <ListItemLink to="/" text="Weather" icon={<CloudOutlinedIcon />} /> */}
-        <ListItemLink to="/tech/react" text="Tech Links" icon={<InboxIcon />} onClick={handleClick} />
+        <ListItemLink to="/tech/react" text="Tech Topics" icon={<InboxIcon />} onClick={handleClick} />
       </List>
       <Divider />
       <List>
-        <ListItemLink to="/category" text="Create Category" icon={<InboxIcon />} />
-        <ListItemLink to="/subCategory" text="Create Subcategory" icon={<InboxIcon />} />
-        <ListItemLink to="/topic" text="Create Links" icon={<InboxIcon />} />
+        <ListItemLink to="/category" text="Create Categories" icon={<InboxIcon />} />
+        <ListItemLink to="/subCategory" text="Create Subcategories" icon={<InboxIcon />} />
+        <ListItemLink to="/topic" text="Create topics" icon={<InboxIcon />} />
+      </List>
+      <Divider />
+      <List>
+        <ListItemLink to="/weather/dallas" text="Weather" icon={<CloudOutlinedIcon />} />
       </List>
     </>
   );

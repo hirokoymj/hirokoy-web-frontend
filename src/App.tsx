@@ -22,9 +22,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Navigate to="/tech/react" />} />
-          {/* <Route path="weather" element={<WeatherLayout />}>
+          <Route path="weather" element={<WeatherLayout />}>
             <Route path=":city" element={<WeatherView />} />
-          </Route>  */}
+          </Route>
           <Route path="tech" element={<TechLayout />}>
             <Route path=":abbr" element={<TechView />} />
           </Route>
