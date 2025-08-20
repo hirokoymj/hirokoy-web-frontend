@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import InboxIcon from '@mui/icons-material/Inbox';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
+import MmsOutlinedIcon from '@mui/icons-material/MmsOutlined';
 import Divider from '@mui/material/Divider';
 import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
@@ -65,6 +66,11 @@ export const LeftNaviagtion = () => {
       <List>
         <ListItemLink to="/weather/dallas" text="Weather" icon={<CloudOutlinedIcon />} />
       </List>
+      <Divider />
+      <List>
+        <ListItemLink to="/ai" text="AI demo" icon={<MmsOutlinedIcon />} />
+      </List>
+      <Divider />
     </>
   );
 };
