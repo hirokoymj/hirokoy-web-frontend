@@ -31,7 +31,13 @@ export const TopicEditForm = ({
     <Grid container direction="column" spacing={3}>
       <FormProvider {...methods}>
         <Grid size={12}>
-          <FormInputDropdown name="category" label="Category" options={category_options} disabled={loading} />
+          <FormInputDropdown
+            name="category"
+            label="Category"
+            options={category_options}
+            disabled={loading}
+            focused={true}
+          />
         </Grid>
         <Grid size={12}>
           <FormInputDropdown name="subCategory" label="Sub Category" disabled={loading} options={subCategory_options} />

@@ -35,7 +35,7 @@ export const CategoryEditForm = ({ onSubmit, initialValues, loading }: CategoryE
       ) : (
         <FormProvider {...methods}>
           <Grid size={12}>
-            <FormInputText label="Name" name="name" />
+            <FormInputText label="Name" name="name" focused={true} />
           </Grid>
           <Grid size={12}>
             <FormInputText label="Abbreviation" name="abbr" />

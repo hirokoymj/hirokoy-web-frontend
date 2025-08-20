@@ -57,9 +57,9 @@ export const LeftNaviagtion = () => {
       </List>
       <Divider />
       <List>
-        <ListItemLink to="/category" text="Create Categories" icon={<InboxIcon />} />
-        <ListItemLink to="/subCategory" text="Create Subcategories" icon={<InboxIcon />} />
-        <ListItemLink to="/topic" text="Create topics" icon={<InboxIcon />} />
+        <ListItemLink to="/category" text="Create Category" icon={<InboxIcon />} />
+        <ListItemLink to="/subCategory" text="Create Subcategory" icon={<InboxIcon />} />
+        <ListItemLink to="/topic" text="Create Link" icon={<InboxIcon />} />
       </List>
       <Divider />
       <List>

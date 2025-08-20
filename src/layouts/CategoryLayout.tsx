@@ -52,7 +52,7 @@ export const CategoryLayout = () => {
       <Outlet />
       <Grid container spacing={3} justifyContent="center">
         <Grid size={12}>
-          <Title text="Tech Links Categories" />
+          <Title text="Tech Link Category" />
           <Paper>
             <CategoryForm />
           </Paper>

@@ -35,7 +35,13 @@ export const SubCategoryForm = () => {
       <FormProvider {...methods}>
         <Grid container spacing={2}>
           <Grid size={12}>
-            <FormInputDropdown name="categoryId" label="Category" options={category_options} disabled={loading} />
+            <FormInputDropdown
+              name="categoryId"
+              label="Category"
+              options={category_options}
+              disabled={loading}
+              focused={true}
+            />
           </Grid>
           <Grid size={12}>
             <FormInputText label="Sub Category Name" name="name" />

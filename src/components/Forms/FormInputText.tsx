@@ -8,9 +8,10 @@ interface FormInputTextProps {
   type?: 'text' | 'password' | 'number' | 'email';
   placeholder?: string;
   style?: React.CSSProperties;
+  focused?: boolean;
 }
 
-export const FormInputText: FC<FormInputTextProps> = ({ name, label, type, placeholder, style }) => {
+export const FormInputText: FC<FormInputTextProps> = ({ name, label, type, placeholder, style, focused }) => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -28,6 +29,7 @@ export const FormInputText: FC<FormInputTextProps> = ({ name, label, type, place
           type={type ? type : 'text'}
           placeholder={placeholder || placeholder}
           style={{ ...style }}
+          focused={focused}
         />
       )}
     />

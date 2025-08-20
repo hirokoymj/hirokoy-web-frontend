@@ -30,7 +30,7 @@ export const CategoryForm = () => {
       <FormProvider {...methods}>
         <Grid container spacing={2}>
           <Grid size={12}>
-            <FormInputText label="Category name" name="name" />
+            <FormInputText label="Category name" name="name" focused={true} />
           </Grid>
           <Grid size={12}>
             <FormInputText label="Abbreviation" name="abbr" />

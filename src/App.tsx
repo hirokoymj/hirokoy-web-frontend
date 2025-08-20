@@ -15,6 +15,7 @@ import { TechView } from './pages/tech/TechView';
 import { LoginView } from './pages/auth/LoginView';
 import { SignupView } from './pages/auth/SignupView';
 import { NotFound } from './pages/base/NotFound';
+import Demo from './pages/Demo';
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
           </Route>
           <Route path="login" element={<LoginView />} />
           <Route path="signup" element={<SignupView />} />
+          <Route path="demo" element={<Demo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

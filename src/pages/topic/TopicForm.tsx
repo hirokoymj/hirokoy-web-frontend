@@ -40,6 +40,7 @@ export const TopicForm = () => {
               options={category_options}
               handleChange={handleCategoryChange}
               disabled={loading}
+              focused={true}
             />
           </Grid>
           <Grid size={12}>

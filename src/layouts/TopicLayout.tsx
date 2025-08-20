@@ -52,7 +52,7 @@ export const TopicLayout = () => {
       <Outlet />
       <Grid container spacing={3} justifyContent="center">
         <Grid size={12}>
-          <Title text="Technical Topics" />
+          <Title text="Tech Link" />
           <Paper>
             <TopicForm />
           </Paper>

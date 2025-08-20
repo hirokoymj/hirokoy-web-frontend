@@ -33,7 +33,7 @@ export const SubCategoryEditForm = ({
       ) : (
         <FormProvider {...methods}>
           <Grid size={12}>
-            <FormInputDropdown name="categoryId" label="Category" options={category_options} />
+            <FormInputDropdown name="categoryId" label="Category" options={category_options} focused={true} />
           </Grid>
           <Grid size={12}>
             <FormInputText label="Sub Category Name" name="name" />

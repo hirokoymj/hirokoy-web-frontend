@@ -9,7 +9,6 @@ import { AuthProvider } from './contexts/authContext';
 import { SnackbarProvider } from 'notistack';
 
 const client = new ApolloClient({
-  //uri: 'https://hiroko-backend-test-b6f2db3a5c3e.herokuapp.com/',
   uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
   cache: new InMemoryCache(),
 });
@@ -28,5 +27,6 @@ root.render(
         </AuthProvider>
       </ReduxProvider>
     </ApolloProvider>
+    ,
   </React.StrictMode>,
 );

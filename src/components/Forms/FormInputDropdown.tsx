@@ -13,9 +13,17 @@ interface FormInputDropdownProps {
   options: DropdownOption[];
   disabled?: boolean;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  focused?: boolean;
 }
 
-export const FormInputDropdown: FC<FormInputDropdownProps> = ({ name, label, options, disabled, handleChange }) => {
+export const FormInputDropdown: FC<FormInputDropdownProps> = ({
+  name,
+  label,
+  options,
+  disabled,
+  handleChange,
+  focused = false,
+}) => {
   const {
     control,
     formState: { errors },
@@ -34,9 +42,9 @@ export const FormInputDropdown: FC<FormInputDropdownProps> = ({ name, label, opt
               handleChange && handleChange(e);
             }}
             value={field.value}
-            //labelId={name}
             variant="outlined"
             disabled={disabled}
+            focused={focused}
           >
             {options.map((option) => (
               <MenuItem key={option.value} value={option.value}>
