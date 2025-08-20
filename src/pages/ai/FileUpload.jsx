@@ -16,7 +16,7 @@ function FileUpload({ setFile }) {
 
   return (
     <section>
-      <h2>Try to upload a PDF, JPG or PNG image.</h2>
+      <h2>Let's upload an image (PDF, JPG or PNG) to start chat.</h2>
       <input type="file" accept=".pdf, .jpg, .jpeg, .png" onChange={handleFileUpload} />
     </section>
   );
