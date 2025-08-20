@@ -45,9 +45,9 @@ npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
 
 <hr />
 
-## Google Cloud Platform(GCP)
+## Google Cloud (GCP)
 
-**Implementing Google Account Authentication**
+**Google Account Authentication**
 
 1. Firebase console -> Add app -> Web -> Add Firebase to your web app -> Authentication -> Add new provider -> Google -> `npm install firebase` -> Copy Firebase config code in your app.
 2. GCP console -> Identity Platform -> Providers -> Edit Google -> Add domain (www.hirokoymj.com)
@@ -57,7 +57,7 @@ npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
 
 <hr />
 
-**Implementing Google Map in your site**
+**Google Map Implementation**
 
 - GCP console -> APIs & Services -> Enable `Maps JavaScript API` -> Add key in the component `<GoogleMapReact bootstrapURLKeys={{ key: "" }}>`
 
@@ -67,6 +67,10 @@ maps-backend.googleapis.com                  Maps JavaScript API
 ```
 
 ![](./src/assets/gcp-google-map-api.png)
+
+## AI @firebase/ai
+
+![](./src/assets/ai-page.png)
 
 ## References
 
