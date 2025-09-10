@@ -15,6 +15,7 @@ export default defineConfig(({ command, mode }) => {
       'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(env.FIREBASE_STORAGE_BUCKET),
       'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(env.FIREBASE_MESSAGING_SENDER_ID),
       'process.env.FIREBASE_APP_ID': JSON.stringify(env.FIREBASE_APP_ID),
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
   };
 });

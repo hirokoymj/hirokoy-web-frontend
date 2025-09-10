@@ -16,6 +16,7 @@ import { LoginView } from './pages/auth/LoginView';
 import { SignupView } from './pages/auth/SignupView';
 import { NotFound } from './pages/base/NotFound';
 import { AIDemo } from './pages/ai/AIDemo';
+import { GeminiDemo } from './pages/ai-summarization/GeminiDemo';
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="login" element={<LoginView />} />
           <Route path="signup" element={<SignupView />} />
           <Route path="ai" element={<AIDemo />} />
+          <Route path="ai2" element={<GeminiDemo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
