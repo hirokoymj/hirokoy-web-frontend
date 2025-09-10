@@ -50,7 +50,7 @@ export const GeminiDemo = () => {
         contents: [createUserContent(['Summarize the following text in less than 300 characters.', example1])],
       });
       setStatus('success');
-      setOutput(response.text);
+      setOutput(response.text); //response.text is a property, not reponse.text().
     } catch (error) {
       setStatus('error');
     }

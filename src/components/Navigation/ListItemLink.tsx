@@ -68,7 +68,8 @@ export const LeftNaviagtion = () => {
       </List>
       <Divider />
       <List>
-        <ListItemLink to="/ai" text="AI demo" icon={<MmsOutlinedIcon />} />
+        <ListItemLink to="/ai" text="AI - image-to-text" icon={<MmsOutlinedIcon />} />
+        <ListItemLink to="/ai2" text="AI - text-to-text" icon={<MmsOutlinedIcon />} />
       </List>
       <Divider />
     </>
